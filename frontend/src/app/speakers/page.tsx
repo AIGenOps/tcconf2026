@@ -19,7 +19,7 @@ const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const revalidate = 3600; // Cache and revalidate page hourly
+export const revalidate = 0; // Disable cache for instant update
 
 export default async function SpeakersPage() {
   const allSpeakers = await getSpeakers();
