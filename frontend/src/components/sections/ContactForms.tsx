@@ -107,7 +107,6 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
 
   const tabs: { id: FormTab; name: string }[] = [
     { id: "contact", name: "General Inquiry" },
-    { id: "sponsor", name: "Sponsor Application" },
     { id: "partner", name: "Partner With Us" },
     { id: "volunteer", name: "Become a Volunteer" },
   ];

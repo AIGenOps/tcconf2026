@@ -74,7 +74,7 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
             <div 
               className="relative font-mono font-black text-white whitespace-nowrap tracking-[0.18em]"
               style={{
-                fontFamily: "'Ubuntu Mono', monospace",
+                fontFamily: "var(--font-ubuntu-mono), monospace",
                 fontSize: "clamp(32px, 8vw, 76px)",
                 letterSpacing: "0.18em",
                 fontWeight: 900
