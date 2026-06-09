@@ -258,9 +258,26 @@ export default function LiquidBackground() {
     initPipes();
     draw();
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.altKey && (e.key === "p" || e.key === "P")) {
+        e.preventDefault();
+        if (animState === "idle" || animState === "regenerating") {
+          animState = "pruning";
+          stateTime = Date.now();
+          lastStepTime = Date.now();
+        } else if (animState === "pruning" || animState === "pruned") {
+          animState = "regenerating";
+          stateTime = Date.now();
+          lastStepTime = Date.now();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("resize", resize);
 
     return () => {
+      window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("resize", resize);
       window.cancelAnimationFrame(animationId);
       if (containerRef.current && canvas?.b) {
