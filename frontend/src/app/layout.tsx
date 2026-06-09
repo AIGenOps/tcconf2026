@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LiquidBackground from "@/components/animations/LiquidBackground";
 import ScrollRevealInit from "@/components/animations/ScrollRevealInit";
-import IntroSequence from "@/components/animations/IntroSequence";
+import SiteWrapper from "@/components/animations/SiteWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -85,9 +85,6 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col relative text-slate-100 bg-[#030303] selection:bg-thunder-blue/30 selection:text-white">
-        {/* Cinematic loading intro reveal */}
-        <IntroSequence />
-
         {/* Scroll Reveal & Letter Stagger Client Initializer */}
         <ScrollRevealInit />
 
@@ -97,16 +94,10 @@ export default function RootLayout({
         {/* Static Noise Overlay */}
         <div className="noise-bg" />
 
-        {/* Global Floating Navigation */}
-        <Navbar />
-
-        {/* Dynamic page contents */}
-        <div className="flex-grow flex flex-col relative z-10 print:z-0">
+        {/* Site Wrapper handles cinematic intro sequencing and main layout fade-in */}
+        <SiteWrapper navbar={<Navbar />} footer={<Footer />}>
           {children}
-        </div>
-
-        {/* Footer */}
-        <Footer />
+        </SiteWrapper>
       </body>
     </html>
   );
