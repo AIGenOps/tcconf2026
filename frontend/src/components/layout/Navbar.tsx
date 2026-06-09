@@ -56,8 +56,8 @@ export default function Navbar() {
         <div
           className={`mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 max-w-4xl ${
             scrolled
-              ? "glass-panel shadow-[0_10px_30px_-10px_rgba(0,82,255,0.15)]"
-              : "bg-transparent border-b border-transparent"
+              ? "glass-panel shadow-[0_10px_30px_-10px_rgba(0,82,255,0.15)] border-white/10"
+              : "bg-white/3 border border-white/5 backdrop-blur-md"
           }`}
         >
           <nav className="hidden lg:flex items-center space-x-1">
