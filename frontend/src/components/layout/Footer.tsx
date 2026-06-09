@@ -15,13 +15,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         {/* Brand Column */}
         <div className="space-y-4">
-          <div className="flex items-center space-x-2">
-            <span className="font-mono text-sm font-bold tracking-wider text-slate-200">
-              THUNDER<span className="text-thunder-cyan">CIPHER</span>
+          <a href="https://thundercipher.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 group">
+            <span className="font-mono text-sm font-bold tracking-wider text-slate-200 group-hover:text-white transition-colors">
+              THUNDER<span className="text-thunder-cyan group-hover:text-thunder-cyan/85">CIPHER</span>
             </span>
-          </div>
+          </a>
           <p className="text-slate-400 text-xs leading-relaxed">
-            Shaping the Future of Cyber Defense. An elite annual summit for researchers, developers, developers, and defense experts.
+            Your gateway to mastering offensive security. Access real-world labs, track your progress, and elevate your cybersecurity journey.
           </p>
         </div>
 
@@ -96,15 +96,7 @@ export default function Footer() {
       {/* Bottom Legal / Details section */}
       <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] text-slate-500 font-mono">
         <div>
-          &copy; {currentYear} ThunderCipher Conference. All Rights Reserved.
-        </div>
-        <div className="flex items-center space-x-4">
-          <span className="flex items-center">
-            <Cpu className="w-3.5 h-3.5 mr-1 text-thunder-blue" /> Next.js 15
-          </span>
-          <span className="flex items-center">
-            Crafted with <Heart className="w-3 h-3 mx-1 text-red-500 fill-red-500" /> for Sharda Univ
-          </span>
+          &copy; 2026 ThunderCipher All Rights Reserved.
         </div>
       </div>
     </footer>
