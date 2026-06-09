@@ -2,44 +2,50 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 interface IntroSequenceProps {
   onComplete?: () => void;
 }
 
 export default function IntroSequence({ onComplete }: IntroSequenceProps) {
-  const [shouldPlay, setShouldPlay] = useState<boolean | null>(null);
+  const [shouldPlay, setShouldPlay] = useState<boolean>(true);
   const [isSkipped, setIsSkipped] = useState(false);
+  const pathname = usePathname();
 
+  // Reset to initial state when route changes
   useEffect(() => {
     setShouldPlay(true);
-    document.body.style.overflow = "hidden";
-  }, []);
+    setIsSkipped(false);
+  }, [pathname]);
 
+  // Phase 1: When shouldPlay is true and isSkipped is false, wait 2.5s then trigger skip (fade out)
   useEffect(() => {
-    if (shouldPlay !== true) return;
+    if (!shouldPlay || isSkipped) return;
 
-    // Automatically fade out 2.5s after animation starts (once letters fully clear up)
-    const fadeTimer = setTimeout(() => {
+    document.body.style.overflow = "hidden";
+
+    const timer = setTimeout(() => {
       setIsSkipped(true);
-
-      const completeTimer = setTimeout(() => {
-        handleComplete();
-      }, 800); // wait for 800ms motion.div exit transition
-
-      return () => clearTimeout(completeTimer);
     }, 2500);
 
-    return () => clearTimeout(fadeTimer);
-  }, [shouldPlay]);
+    return () => clearTimeout(timer);
+  }, [shouldPlay, isSkipped]);
 
-  const handleComplete = () => {
-    document.body.style.overflow = "unset";
-    setShouldPlay(false);
-    if (onComplete) onComplete();
-  };
+  // Phase 2: When isSkipped becomes true, wait 800ms then complete the sequence (hide completely)
+  useEffect(() => {
+    if (!isSkipped) return;
 
-  if (shouldPlay === false || shouldPlay === null) {
+    const timer = setTimeout(() => {
+      setShouldPlay(false);
+      document.body.style.overflow = "unset";
+      if (onComplete) onComplete();
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [isSkipped, onComplete]);
+
+  if (!shouldPlay) {
     return null;
   }
 
