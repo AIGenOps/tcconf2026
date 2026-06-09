@@ -63,7 +63,7 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/sponsor" className="text-slate-400 hover:text-white transition-colors">
-                Sponsor Application
+                Sponsor Us
               </Link>
             </li>
             <li>

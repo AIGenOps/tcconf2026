@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Mail, Award, ExternalLink } from "lucide-react";
+import { ArrowLeft, FileText, Award, ExternalLink } from "lucide-react";
 
 export default function SponsorPage() {
   return (
@@ -26,7 +26,7 @@ export default function SponsorPage() {
         <div className="space-y-6">
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold tracking-[0.3em] text-thunder-cyan uppercase">
-              PARTNERSHIP OPPORTUNITIES
+              SPONSOR US
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               Sponsor ThunderCipher 2026
@@ -39,27 +39,29 @@ export default function SponsorPage() {
           </p>
         </div>
 
-        {/* Interactive Mail Card */}
+        {/* Interactive Sponsor Card */}
         <div className="glass-panel border border-white/5 rounded-2xl bg-[#070913]/30 p-8 md:p-12 backdrop-blur-sm shadow-sm relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-4 max-w-xl">
             <div className="inline-flex items-center justify-center p-3 rounded-xl bg-thunder-blue/10 border border-thunder-blue/20 text-thunder-cyan mb-2">
               <Award className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-white tracking-tight">
-              Connect With Our Team
+              Sponsorship Inquiry Form
             </h3>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Sponsorship packages are available across multiple tiers (Bronze, Silver, Gold, Platinum, and Title). To receive our comprehensive sponsorship prospectus or discuss custom branding opportunities, please reach out to us directly via email.
+              Sponsorship packages are available across multiple tiers (Bronze, Silver, Gold, Platinum, and Title). To receive our comprehensive sponsorship prospectus or discuss custom branding opportunities, please submit our sponsorship form.
             </p>
           </div>
 
           <div className="flex flex-col justify-center">
             <a
-              href="mailto:teams@thundercipher.in"
-              className="inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase bg-thunder-blue text-white shadow-glow-blue hover:bg-thunder-blue/90 transition-all duration-300 transform hover:-translate-y-0.5 border border-thunder-blue/50"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeMf0sDCb4mV51r-HrVYHUxsq13HthTRfxh9KpIZraX7k6Hqg/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase bg-thunder-blue text-white shadow-glow-blue hover:bg-thunder-blue/90 transition-all duration-300 transform hover:-translate-y-0.5 border border-thunder-blue/50 whitespace-nowrap"
             >
-              <Mail className="w-4 h-4" />
-              <span>teams@thundercipher.in</span>
+              <FileText className="w-4 h-4" />
+              <span>Sponsor Us</span>
               <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
             </a>
           </div>
