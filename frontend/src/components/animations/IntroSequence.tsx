@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface IntroSequenceProps {
-  onComplete: () => void;
+  onComplete?: () => void;
 }
 
 export default function IntroSequence({ onComplete }: IntroSequenceProps) {
@@ -17,7 +17,7 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
     const introPlayed = sessionStorage.getItem("tcconf2026_intro_played");
     if (introPlayed === "true") {
       setShouldPlay(false);
-      onComplete();
+      if (onComplete) onComplete();
     } else {
       setShouldPlay(true);
       document.body.style.overflow = "hidden";
@@ -28,7 +28,7 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
     sessionStorage.setItem("tcconf2026_intro_played", "true");
     document.body.style.overflow = "unset";
     setShouldPlay(false);
-    onComplete();
+    if (onComplete) onComplete();
   };
 
   const handleReplay = (e: React.MouseEvent) => {

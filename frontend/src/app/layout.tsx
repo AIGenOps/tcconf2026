@@ -86,7 +86,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col relative text-slate-100 bg-[#030303] selection:bg-thunder-blue/30 selection:text-white">
         {/* Cinematic loading intro reveal */}
-        <IntroSequence onComplete={() => {}} />
+        <IntroSequence />
 
         {/* Scroll Reveal & Letter Stagger Client Initializer */}
         <ScrollRevealInit />
