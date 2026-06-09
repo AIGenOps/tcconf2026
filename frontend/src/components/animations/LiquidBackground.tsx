@@ -50,6 +50,57 @@ export default function LiquidBackground() {
     let pipeProps: Float32Array;
     let animationId: number;
 
+    // Pruning state machine variables
+    let currentPipeCount = 30;
+    let animState: "idle" | "pruning" | "pruned" | "regenerating" = "idle";
+    let stateTime = Date.now();
+    let lastStepTime = Date.now();
+
+    const updateAnimationState = () => {
+      const now = Date.now();
+      const elapsedSinceStateChange = now - stateTime;
+
+      if (animState === "idle") {
+        // Wait 2 minutes (120000ms) before starting to prune
+        if (elapsedSinceStateChange >= 120000) {
+          animState = "pruning";
+          stateTime = now;
+          lastStepTime = now;
+        }
+      } else if (animState === "pruning") {
+        // Decrease currentPipeCount by 1 every 1500ms
+        if (now - lastStepTime >= 1500) {
+          if (currentPipeCount > 5) {
+            currentPipeCount--;
+            lastStepTime = now;
+          } else {
+            animState = "pruned";
+            stateTime = now;
+          }
+        }
+      } else if (animState === "pruned") {
+        // Stay thinned out for 15 seconds
+        if (elapsedSinceStateChange >= 15000) {
+          animState = "regenerating";
+          stateTime = now;
+          lastStepTime = now;
+        }
+      } else if (animState === "regenerating") {
+        // Increase currentPipeCount by 1 every 1500ms
+        if (now - lastStepTime >= 1500) {
+          if (currentPipeCount < 30) {
+            const nextIdx = currentPipeCount;
+            currentPipeCount++;
+            initPipe(nextIdx * pipePropCount);
+            lastStepTime = now;
+          } else {
+            animState = "idle";
+            stateTime = now;
+          }
+        }
+      }
+    };
+
     const initPipe = (i: number) => {
       const x = rand(canvas.a.width);
       const y = center[1];
@@ -71,7 +122,7 @@ export default function LiquidBackground() {
     };
 
     const drawPipe = (x: number, y: number, life: number, ttl: number, width: number, hue: number) => {
-      if (!ctx.a) return;
+      if (!ctx.a || ttl <= 0) return;
       ctx.a.save();
       ctx.a.strokeStyle = `hsla(${hue},75%,50%,${fadeInOut(life, ttl) * 0.045})`;
       ctx.a.beginPath();
@@ -99,6 +150,8 @@ export default function LiquidBackground() {
       const width = pipeProps[i7];
       const hue = pipeProps[i8];
 
+      if (ttl <= 0) return;
+
       drawPipe(x, y, life, ttl, width, hue);
 
       life++;
@@ -120,7 +173,12 @@ export default function LiquidBackground() {
       pipeProps[i5] = life;
 
       if (life > ttl) {
-        initPipe(i);
+        const pipeIndex = i / pipePropCount;
+        if (pipeIndex < currentPipeCount) {
+          initPipe(i);
+        } else {
+          pipeProps[i + 5] = -1; // Mark as deactivated
+        }
       }
     };
 
@@ -187,6 +245,7 @@ export default function LiquidBackground() {
 
     const draw = () => {
       tick++;
+      updateAnimationState();
       for (let i = 0; i < pipePropsLength; i += pipePropCount) {
         updatePipe(i);
       }
