@@ -11,12 +11,17 @@ interface SiteWrapperProps {
 }
 
 export default function SiteWrapper({ children, navbar, footer }: SiteWrapperProps) {
-  const [introActive, setIntroActive] = useState(true);
   const pathname = usePathname();
+  const isMainPage = pathname === "/";
+  const [introActive, setIntroActive] = useState(isMainPage);
 
-  // Reset intro state to active whenever route/pathname changes
+  // Reset intro state to active whenever route/pathname changes (only on homepage)
   useEffect(() => {
-    setIntroActive(true);
+    if (pathname === "/") {
+      setIntroActive(true);
+    } else {
+      setIntroActive(false);
+    }
   }, [pathname]);
 
   return (
@@ -30,7 +35,7 @@ export default function SiteWrapper({ children, navbar, footer }: SiteWrapperPro
         style={{
           opacity: introActive ? 0 : 1,
           pointerEvents: introActive ? "none" : "auto",
-          transition: "opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
+          transition: introActive ? "none" : "opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         {navbar}

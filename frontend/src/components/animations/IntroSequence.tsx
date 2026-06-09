@@ -9,14 +9,20 @@ interface IntroSequenceProps {
 }
 
 export default function IntroSequence({ onComplete }: IntroSequenceProps) {
-  const [shouldPlay, setShouldPlay] = useState<boolean>(true);
-  const [isSkipped, setIsSkipped] = useState(false);
   const pathname = usePathname();
+  const isMainPage = pathname === "/";
+  const [shouldPlay, setShouldPlay] = useState<boolean>(isMainPage);
+  const [isSkipped, setIsSkipped] = useState(false);
 
   // Reset to initial state when route changes
   useEffect(() => {
-    setShouldPlay(true);
-    setIsSkipped(false);
+    if (pathname === "/") {
+      setShouldPlay(true);
+      setIsSkipped(false);
+    } else {
+      setShouldPlay(false);
+      setIsSkipped(true);
+    }
   }, [pathname]);
 
   // Phase 1: When shouldPlay is true and isSkipped is false, wait 2.5s then trigger skip (fade out)
