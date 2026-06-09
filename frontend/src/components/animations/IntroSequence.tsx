@@ -85,15 +85,6 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
                   {ch}
                 </span>
               ))}
-
-              {/* Mask overlay sliding out */}
-              <div
-                className="absolute inset-0 bg-black origin-left"
-                style={{
-                  animation: "tcMask 1.6s cubic-bezier(0.76, 0, 0.24, 1) forwards",
-                  animationDelay: "0.2s"
-                }}
-              />
             </div>
           </div>
         </motion.div>
