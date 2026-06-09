@@ -70,7 +70,7 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredIndex(idx)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   className={`relative px-4 py-2 text-xs font-medium tracking-wider transition-colors duration-300 ${
-                    isActive ? "text-thunder-cyan font-semibold" : "text-slate-400 hover:text-white"
+                    isActive ? "text-thunder-cyan font-semibold" : "text-white/90 hover:text-white"
                   }`}
                 >
                   {hoveredIndex === idx && (
@@ -128,7 +128,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="block text-2xl font-bold tracking-widest text-slate-300 hover:text-thunder-cyan transition-colors"
+                    className="block text-2xl font-bold tracking-widest text-white/90 hover:text-thunder-cyan transition-colors"
                   >
                     {link.name}
                   </Link>
