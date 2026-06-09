@@ -12,16 +12,9 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
   const [isSkipped, setIsSkipped] = useState(false);
 
   useEffect(() => {
-    // Check if intro has already been played in this session
-    const introPlayed = sessionStorage.getItem("tcconf2026_intro_played");
-    if (introPlayed === "true") {
-      setShouldPlay(false);
-      if (onComplete) onComplete();
-    } else {
-      setShouldPlay(true);
-      document.body.style.overflow = "hidden";
-    }
-  }, [onComplete]);
+    setShouldPlay(true);
+    document.body.style.overflow = "hidden";
+  }, []);
 
   useEffect(() => {
     if (shouldPlay !== true) return;
@@ -41,7 +34,6 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
   }, [shouldPlay]);
 
   const handleComplete = () => {
-    sessionStorage.setItem("tcconf2026_intro_played", "true");
     document.body.style.overflow = "unset";
     setShouldPlay(false);
     if (onComplete) onComplete();
