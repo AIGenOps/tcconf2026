@@ -6,15 +6,23 @@ import Villages from "@/components/sections/Villages";
 import Sponsors from "@/components/sections/Sponsors";
 import FAQ from "@/components/sections/FAQ";
 
-export default function Home() {
+import { getFAQs, getSponsors, getPartners } from "@/lib/sanity";
+
+export const revalidate = 0; // Disable cache for instant update
+
+export default async function Home() {
+  const faqs = await getFAQs();
+  const sponsors = await getSponsors();
+  const partners = await getPartners();
+
   return (
     <>
       <Hero />
       <Stats />
       <WhyAttend />
       <Villages />
-      <Sponsors />
-      <FAQ />
+      <Sponsors initialSponsors={sponsors} initialPartners={partners} />
+      <FAQ initialFAQs={faqs} />
     </>
   );
 }

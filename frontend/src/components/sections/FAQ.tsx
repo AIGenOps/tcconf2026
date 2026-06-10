@@ -72,17 +72,25 @@ function FAQAccordion({ question, answer, isOpen, onToggle }: FAQItem & { isOpen
   );
 }
 
-export default function FAQ() {
+interface FAQProps {
+  initialFAQs?: FAQItem[];
+}
+
+export default function FAQ({ initialFAQs }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [faqList, setFaqList] = useState<FAQItem[]>([]);
+  const [faqList, setFaqList] = useState<FAQItem[]>(initialFAQs || []);
 
   useEffect(() => {
-    async function loadFAQs() {
-      const data = await getFAQs();
-      setFaqList(data);
+    if (initialFAQs && initialFAQs.length > 0) {
+      setFaqList(initialFAQs);
+    } else {
+      async function loadFAQs() {
+        const data = await getFAQs();
+        setFaqList(data);
+      }
+      loadFAQs();
     }
-    loadFAQs();
-  }, []);
+  }, [initialFAQs]);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

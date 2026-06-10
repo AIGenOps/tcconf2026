@@ -91,21 +91,31 @@ const getLogoComponent = (logoUrl?: string, name?: string) => {
   );
 };
 
-export default function Sponsors() {
-  const [sponsorsList, setSponsorsList] = useState<Sponsor[]>([]);
-  const [partnersList, setPartnersList] = useState<Partner[]>([]);
+interface SponsorsProps {
+  initialSponsors?: Sponsor[];
+  initialPartners?: Partner[];
+}
+
+export default function Sponsors({ initialSponsors, initialPartners }: SponsorsProps) {
+  const [sponsorsList, setSponsorsList] = useState<Sponsor[]>(initialSponsors || []);
+  const [partnersList, setPartnersList] = useState<Partner[]>(initialPartners || []);
 
   useEffect(() => {
-    async function loadData() {
-      const [sponsorsData, partnersData] = await Promise.all([
-        getSponsors(),
-        getPartners(),
-      ]);
-      setSponsorsList(sponsorsData);
-      setPartnersList(partnersData);
+    if (initialSponsors && initialPartners) {
+      setSponsorsList(initialSponsors);
+      setPartnersList(initialPartners);
+    } else {
+      async function loadData() {
+        const [sponsorsData, partnersData] = await Promise.all([
+          getSponsors(),
+          getPartners(),
+        ]);
+        setSponsorsList(sponsorsData);
+        setPartnersList(partnersData);
+      }
+      loadData();
     }
-    loadData();
-  }, []);
+  }, [initialSponsors, initialPartners]);
 
   return (
     <section className="relative z-10 py-24 px-6 md:px-8 border-t border-white/5" id="sponsors">
