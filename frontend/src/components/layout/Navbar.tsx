@@ -87,7 +87,7 @@ export default function Navbar() {
           </nav>
 
           {/* Call to Action Button / Menu Toggle */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 ml-auto lg:ml-0">
             <Link
               href="/tickets"
               className="hidden md:inline-flex items-center space-x-1 px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase border border-thunder-blue/40 bg-thunder-blue/10 hover:bg-thunder-blue hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(0,82,255,0.2)] hover:shadow-[0_0_25px_rgba(0,82,255,0.4)]"

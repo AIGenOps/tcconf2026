@@ -89,7 +89,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="grid grid-cols-4 gap-2 sm:gap-4 max-w-md w-full mx-auto bg-[#070913]/60 border border-white/5 p-4 rounded-2xl backdrop-blur-lg shadow-glow-blue"
+            className="grid grid-cols-4 gap-2 sm:gap-4 max-w-md w-full mx-auto bg-[#070913]/60 border border-white/5 p-3 sm:p-4 rounded-2xl backdrop-blur-lg shadow-glow-blue"
           >
             {[
               { label: "DAYS", value: timeLeft.days },
@@ -97,11 +97,11 @@ export default function Hero() {
               { label: "MINS", value: timeLeft.minutes },
               { label: "SECS", value: timeLeft.seconds },
             ].map((unit, idx) => (
-              <div key={idx} className="flex flex-col items-center p-2 rounded-xl bg-white/5 border border-white/5 relative">
-                <span className="font-mono text-2xl sm:text-3xl font-bold text-white tracking-widest leading-none drop-shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+              <div key={idx} className="flex flex-col items-center p-1.5 sm:p-2.5 rounded-xl bg-white/5 border border-white/5 relative">
+                <span className="font-mono text-xl sm:text-3xl font-bold text-white tracking-wide sm:tracking-widest leading-none drop-shadow-[0_0_10px_rgba(0,240,255,0.3)]">
                   {String(unit.value).padStart(2, "0")}
                 </span>
-                <span className="text-[9px] font-mono text-slate-500 tracking-wider mt-2">
+                <span className="text-[8px] sm:text-[9px] font-mono text-slate-500 tracking-wider mt-1.5 sm:mt-2">
                   {unit.label}
                 </span>
               </div>
@@ -118,22 +118,22 @@ export default function Hero() {
         >
           <Link
             href="/tickets"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg border border-thunder-blue/40 transition-all duration-300"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg border border-thunder-blue/40 transition-all duration-300 text-center"
           >
             Register Now
           </Link>
           <Link
             href="/schedule"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-slate-200 transition-all duration-300"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-slate-200 transition-all duration-300 text-center"
           >
             View Schedule
           </Link>
-          <a
-            href="#venue"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-slate-200 transition-all duration-300"
+          <Link
+            href="/venue"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-slate-200 transition-all duration-300 text-center"
           >
             Venue Details
-          </a>
+          </Link>
         </motion.div>
 
       </div>

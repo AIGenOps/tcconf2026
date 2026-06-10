@@ -31,7 +31,7 @@ export default function SiteWrapper({ children, navbar, footer }: SiteWrapperPro
 
       {/* Main site layout container that fades in after the intro completes */}
       <div
-        className="min-h-full flex flex-col flex-grow relative z-10 print:z-0"
+        className="min-h-full flex flex-col flex-grow relative z-10 print:z-0 overflow-x-hidden"
         style={{
           opacity: introActive ? 0 : 1,
           pointerEvents: introActive ? "none" : "auto",
