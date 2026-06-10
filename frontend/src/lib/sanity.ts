@@ -198,7 +198,7 @@ export async function getFAQs(): Promise<FAQ[]> {
 export async function getSponsors(): Promise<Sponsor[]> {
   if (sanityClient) {
     try {
-      const query = `*[_type == "sponsor" && visible == true] { name, link, "logoUrl": logo.asset->url }`;
+      const query = `*[_type == "sponsor" && visible != false] { name, link, "logoUrl": logo.asset->url }`;
       const sponsors = await sanityClient.fetch(query);
       return sponsors || [];
     } catch (err) {
@@ -211,7 +211,7 @@ export async function getSponsors(): Promise<Sponsor[]> {
 export async function getPartners(): Promise<Partner[]> {
   if (sanityClient) {
     try {
-      const query = `*[_type == "partner" && visible == true] { name, link, "logoUrl": logo.asset->url }`;
+      const query = `*[_type == "partner" && visible != false] { name, link, "logoUrl": logo.asset->url }`;
       const partners = await sanityClient.fetch(query);
       return partners || [];
     } catch (err) {
