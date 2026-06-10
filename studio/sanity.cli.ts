@@ -7,5 +7,6 @@ export default defineCliConfig({
   api: {
     projectId,
     dataset,
-  }
+  },
+  studioHost: "tcconf2026",
 });
