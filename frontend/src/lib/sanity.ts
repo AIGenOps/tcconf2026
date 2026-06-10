@@ -1,8 +1,8 @@
 import { createClient } from "@sanity/client";
 
 // Safe loading of Sanity CMS client
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "pb0ebq7l";
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 
 export const sanityClient = projectId && dataset
   ? createClient({
