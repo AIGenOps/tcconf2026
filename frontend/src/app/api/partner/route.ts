@@ -1,15 +1,22 @@
 import { NextResponse } from "next/server";
 import { sendDiscordWebhook } from "@/lib/discord";
+import { sanitizeString, isValidEmail } from "@/lib/sanitize";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, partnerOrg, partnerType, message, captchaToken } = await request.json();
+    const body = await request.json();
+    const name = sanitizeString(body.name, 100);
+    const email = sanitizeString(body.email, 150);
+    const partnerOrg = sanitizeString(body.partnerOrg, 150);
+    const partnerType = sanitizeString(body.partnerType, 100);
+    const message = sanitizeString(body.message, 1000);
+    const captchaToken = sanitizeString(body.captchaToken, 100);
 
     if (!name || !email || !partnerOrg || !partnerType || !message || !captchaToken) {
-      return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+      return NextResponse.json({ error: "Missing required fields or invalid format." }, { status: 400 });
     }
 
-    if (!email.includes("@") || email.length < 5) {
+    if (!isValidEmail(email)) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
     }
 

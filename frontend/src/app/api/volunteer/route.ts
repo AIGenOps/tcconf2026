@@ -1,20 +1,27 @@
 import { NextResponse } from "next/server";
 import { sendDiscordWebhook } from "@/lib/discord";
+import { sanitizeString, isValidEmail, sanitizeUrl } from "@/lib/sanitize";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, github, skills, message, captchaToken } = await request.json();
+    const body = await request.json();
+    const name = sanitizeString(body.name, 100);
+    const email = sanitizeString(body.email, 150);
+    const github = sanitizeUrl(body.github, 200);
+    const skills = sanitizeString(body.skills, 200);
+    const message = sanitizeString(body.message, 1000);
+    const captchaToken = sanitizeString(body.captchaToken, 100);
 
     if (!name || !email || !github || !skills || !message || !captchaToken) {
-      return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+      return NextResponse.json({ error: "Missing required fields or invalid format." }, { status: 400 });
     }
 
-    if (!email.includes("@") || email.length < 5) {
+    if (!isValidEmail(email)) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
     }
 
-    if (!github.startsWith("http")) {
-      return NextResponse.json({ error: "Invalid GitHub profile link." }, { status: 400 });
+    if (!github) {
+      return NextResponse.json({ error: "Invalid GitHub profile link URL." }, { status: 400 });
     }
 
     if (!captchaToken.startsWith("tc_sec_token_")) {

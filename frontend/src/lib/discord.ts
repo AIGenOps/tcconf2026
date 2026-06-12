@@ -1,4 +1,4 @@
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1513557918790713374/A6mDH9r_J6inQHBfovshmslO3FEl9K_yCFjWiXNQQ5pJpx6VpoVF4Rn-tdAkyZDP4kDF";
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
 interface DiscordEmbedField {
   name: string;
@@ -14,9 +14,17 @@ interface SendDiscordWebhookParams {
 }
 
 export async function sendDiscordWebhook({ formType, title, color, fields }: SendDiscordWebhookParams): Promise<boolean> {
+  if (!DISCORD_WEBHOOK_URL) {
+    console.warn("[WARN] DISCORD_WEBHOOK_URL is not configured. Webhook dispatch skipped.");
+    return false;
+  }
+
   const payload = {
     username: "ThunderCipher Security Bot",
     avatar_url: "https://github.com/aigo-admin/tcconf2026/raw/main/Logo/C.png", // fallback or public avatar
+    allowed_mentions: {
+      parse: [], // Disallow all pings (@everyone, @here, role pings, user pings)
+    },
     embeds: [
       {
         title,

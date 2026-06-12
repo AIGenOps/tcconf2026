@@ -69,6 +69,17 @@ const IsacaLogo = () => (
 
 // Helper to map logo string identifiers or corporate name strings to local custom SVGs
 const getLogoComponent = (logoUrl?: string, name?: string) => {
+  // If a valid uploaded photo/logo URL is provided, render the image
+  if (logoUrl && (logoUrl.startsWith("http://") || logoUrl.startsWith("https://") || logoUrl.startsWith("/"))) {
+    return (
+      <img
+        src={logoUrl}
+        alt={name || "Logo"}
+        className="max-h-12 max-w-[80%] w-auto object-contain filter brightness-90 group-hover:brightness-100 transition-all duration-300"
+      />
+    );
+  }
+
   const key = (logoUrl || name || "").toLowerCase();
   
   if (key.includes("sentinel")) return <SentinelLogo />;

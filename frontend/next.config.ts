@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*; connect-src 'self' https://discord.com https://*.sanity.io; font-src 'self' data:; media-src 'self'; object-src 'none'; frame-src 'self' https://www.google.com https://www.google.co.in; frame-ancestors 'none';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://checkout.razorpay.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*; connect-src 'self' https://discord.com https://*.sanity.io https://api.razorpay.com; font-src 'self' data:; media-src 'self'; object-src 'none'; frame-src 'self' https://www.google.com https://www.google.co.in https://api.razorpay.com https://checkout.razorpay.com https://challenges.cloudflare.com; frame-ancestors 'none';",
           },
         ],
       },

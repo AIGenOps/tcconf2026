@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "sanity dev",
+    "dev": "sanity dev --port 3001",
     "build": "sanity build",
     "start": "sanity start",
     "clean": "sanity clean"

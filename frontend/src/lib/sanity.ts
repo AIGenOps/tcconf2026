@@ -132,8 +132,8 @@ export async function getSpeakers(): Promise<Speaker[]> {
 export async function getSchedule(dayNum: number): Promise<ScheduleItem[]> {
   if (sanityClient) {
     try {
-      const query = `*[_type == "schedule" && day == ${dayNum}] | order(orderAsc) { time, title, speaker, type }`;
-      const schedule = await sanityClient.fetch(query);
+      const query = `*[_type == "schedule" && day == $dayNum] | order(orderAsc) { time, title, speaker, type }`;
+      const schedule = await sanityClient.fetch(query, { dayNum });
       if (schedule && schedule.length > 0) return schedule;
     } catch (err) {
       console.warn(`Sanity fetch failed, falling back to local schedule Day ${dayNum} data:`, err);

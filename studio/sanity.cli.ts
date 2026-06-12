@@ -9,4 +9,7 @@ export default defineCliConfig({
     dataset,
   },
   studioHost: "tcconf2026",
+  server: {
+    port: 3001,
+  },
 });
