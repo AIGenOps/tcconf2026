@@ -164,9 +164,6 @@ export default function Navbar() {
           href="/tickets"
           className="group relative flex items-center justify-center p-4 md:p-5 rounded-full bg-[#070913] border border-thunder-blue/40 shadow-glow-blue hover:shadow-glow-blue-lg hover:border-thunder-blue transition-all duration-300"
         >
-          <div className="absolute -top-2 -right-1 px-2 py-0.5 rounded-full bg-thunder-cyan text-[#030303] text-[9px] font-bold tracking-wider animate-pulse-slow">
-            42 left
-          </div>
           <svg
             className="w-5 h-5 text-thunder-cyan group-hover:scale-110 transition-transform duration-300"
             viewBox="0 0 24 24"
