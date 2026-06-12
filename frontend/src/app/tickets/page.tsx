@@ -509,7 +509,7 @@ export default function TicketsPage() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
+            className="inline-flex items-center space-x-2 text-sm font-mono text-slate-300 hover:text-thunder-cyan transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>
@@ -519,7 +519,7 @@ export default function TicketsPage() {
               <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Secure Your Event Pass
               </h1>
-              <p className="text-slate-400 text-sm max-w-xl">
+              <p className="text-slate-200 text-sm max-w-xl">
                 Register for ThunderCipher Conference 2026. Complete the checkout form below to receive your cryptographic ticket entry pass.
               </p>
             </div>
@@ -533,8 +533,8 @@ export default function TicketsPage() {
             <div className="lg:col-span-7 space-y-8">
               {/* Ticket Tier Cards selection */}
               <div className="space-y-4">
-                <h3 className="text-sm font-mono tracking-wider text-slate-400 uppercase flex items-center">
-                  <Terminal className="w-4 h-4 text-thunder-blue mr-2" />
+                <h3 className="text-base font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
+                  <Terminal className="w-4.5 h-4.5 text-thunder-blue mr-2" />
                   Step 01: Select Access Level
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -548,44 +548,44 @@ export default function TicketsPage() {
                         onClick={() => setSelectedTierId(tier.id)}
                         className={`text-left relative rounded-xl border p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
                           isSelected
-                            ? "bg-thunder-blue/5 border-thunder-blue/80 shadow-[0_0_20px_rgba(0,82,255,0.15)] text-white"
-                            : "bg-[#0a0a0c]/50 border-white/5 text-slate-400 hover:border-white/15"
+                            ? "bg-thunder-blue/10 border-thunder-blue shadow-[0_0_20px_rgba(0,82,255,0.2)] text-white"
+                            : "bg-[#0d0d12] border-white/10 text-slate-200 hover:border-white/25"
                         }`}
                       >
                         {/* Discount badge */}
-                        <div className="absolute top-3 right-3 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full text-[8px] font-mono tracking-wider text-slate-300">
+                        <div className="absolute top-3 right-3 bg-white/10 border border-white/25 px-2.5 py-1 rounded-full text-xs font-mono tracking-wider text-white">
                           {discount}% OFF
                         </div>
 
                         <div className="space-y-3">
-                          <span className={`text-[9px] font-mono tracking-widest font-bold ${
-                            isSelected ? "text-thunder-cyan" : "text-slate-500"
+                          <span className={`text-xs font-mono tracking-widest font-bold uppercase ${
+                            isSelected ? "text-thunder-cyan" : "text-slate-200"
                           }`}>
                             {tier.badge || "GATEWAY PASS"}
                           </span>
                           <div>
-                            <h4 className="text-sm font-bold text-white font-sans">{tier.name}</h4>
-                            <p className="text-[10px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                            <h4 className="text-lg font-bold text-white font-sans">{tier.name}</h4>
+                            <p className="text-sm text-slate-200 mt-1.5 line-clamp-3 leading-relaxed">
                               {tier.desc}
                             </p>
                           </div>
                         </div>
 
-                        <div className="mt-5 pt-3 border-t border-white/5 flex items-end justify-between">
+                        <div className="mt-5 pt-3 border-t border-white/10 flex items-end justify-between">
                           <div>
-                            <span className="text-[10px] text-slate-500 line-through block font-mono">
+                            <span className="text-sm text-slate-300 line-through block font-mono font-bold">
                               ₹{tier.originalPrice}
                             </span>
-                            <span className="text-lg font-bold text-white font-mono leading-none">
+                            <span className="text-2xl font-bold text-white font-mono leading-none block mt-0.5">
                               ₹{tier.price}
                             </span>
                           </div>
-                          <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
+                          <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
                             isSelected 
                               ? "bg-thunder-blue border-thunder-blue text-white" 
-                              : "border-white/20 text-transparent"
+                              : "border-white/30 text-transparent"
                           }`}>
-                            <Check className="w-3.5 h-3.5" />
+                            <Check className="w-4 h-4" />
                           </div>
                         </div>
                       </button>
@@ -596,29 +596,29 @@ export default function TicketsPage() {
 
               {/* Attendee details input form */}
               <div className="glass-panel rounded-2xl p-6 md:p-8 space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-white/5">
-                  <h3 className="text-sm font-mono tracking-wider text-slate-300 uppercase flex items-center">
-                    <Terminal className="w-4 h-4 text-thunder-cyan mr-2" />
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                  <h3 className="text-base font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
+                    <Terminal className="w-4.5 h-4.5 text-thunder-cyan mr-2" />
                     Step 02: Attendee Credentials
                   </h3>
-                  <div className="flex items-center space-x-1.5 text-[10px] text-slate-500">
-                    <Shield className="w-3.5 h-3.5 text-thunder-blue" />
+                  <div className="flex items-center space-x-1.5 text-sm text-slate-200 font-bold">
+                    <Shield className="w-4 h-4 text-thunder-blue" />
                     <span>256-BIT TLS ENCRYPTED</span>
                   </div>
                 </div>
 
                 <form onSubmit={handleRegisterSubmit} className="space-y-5">
                   {error && (
-                    <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/20 text-xs text-red-400 flex items-start space-x-2.5">
-                      <AlertCircle className="w-4.5 h-4.5 mt-0.5 flex-shrink-0" />
+                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-400 flex items-start space-x-2.5">
+                      <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>{error}</span>
                     </div>
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-mono text-slate-500 uppercase tracking-wider flex items-center">
-                        <User className="w-3.5 h-3.5 mr-1 text-thunder-blue" /> Full Name
+                    <div className="space-y-2">
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
+                        <User className="w-4 h-4 mr-1 text-thunder-blue" /> Full Name
                       </label>
                       <input
                         type="text"
@@ -626,12 +626,12 @@ export default function TicketsPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Jane Doe"
-                        className="w-full bg-[#0d0d10] border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-sans focus:ring-1 focus:ring-thunder-blue/30"
+                        className="w-full bg-[#0d0d12] border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-base text-white focus:outline-none transition-all placeholder:text-slate-400 font-sans focus:ring-1 focus:ring-thunder-blue/30"
                       />
                     </div>
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-mono text-slate-500 uppercase tracking-wider flex items-center">
-                        <Mail className="w-3.5 h-3.5 mr-1 text-thunder-blue" /> Email Address
+                    <div className="space-y-2">
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
+                        <Mail className="w-4 h-4 mr-1 text-thunder-blue" /> Email Address
                       </label>
                       <input
                         type="email"
@@ -639,15 +639,15 @@ export default function TicketsPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="jane@domain.com"
-                        className="w-full bg-[#0d0d10] border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-sans focus:ring-1 focus:ring-thunder-blue/30"
+                        className="w-full bg-[#0d0d12] border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-base text-white focus:outline-none transition-all placeholder:text-slate-400 font-sans focus:ring-1 focus:ring-thunder-blue/30"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-mono text-slate-500 uppercase tracking-wider flex items-center">
-                        <Smartphone className="w-3.5 h-3.5 mr-1 text-thunder-blue" /> Phone Number
+                    <div className="space-y-2">
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
+                        <Smartphone className="w-4 h-4 mr-1 text-thunder-blue" /> Phone Number
                       </label>
                       <input
                         type="tel"
@@ -655,12 +655,12 @@ export default function TicketsPage() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="9876543210"
-                        className="w-full bg-[#0d0d10] border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-mono focus:ring-1 focus:ring-thunder-blue/30"
+                        className="w-full bg-[#0d0d12] border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-base text-white focus:outline-none transition-all placeholder:text-slate-400 font-mono focus:ring-1 focus:ring-thunder-blue/30"
                       />
                     </div>
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-mono text-slate-500 uppercase tracking-wider flex items-center">
-                        <Building className="w-3.5 h-3.5 mr-1 text-thunder-blue" /> Organization / College
+                    <div className="space-y-2">
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
+                        <Building className="w-4 h-4 mr-1 text-thunder-blue" /> Organization / College
                       </label>
                       <input
                         type="text"
@@ -668,52 +668,52 @@ export default function TicketsPage() {
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
                         placeholder="Apex University"
-                        className="w-full bg-[#0d0d10] border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-sans focus:ring-1 focus:ring-thunder-blue/30"
+                        className="w-full bg-[#0d0d12] border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-base text-white focus:outline-none transition-all placeholder:text-slate-400 font-sans focus:ring-1 focus:ring-thunder-blue/30"
                       />
                     </div>
                   </div>
 
                   {/* Quantity selector */}
-                  <div className="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-[#0d0d10]/60">
-                    <div className="space-y-0.5">
-                      <span className="text-xs font-bold text-white">Passes Quantity</span>
-                      <span className="text-[10px] text-slate-500 block">Limit 10 passes per registration session.</span>
+                  <div className="flex items-center justify-between p-5 rounded-xl border border-white/15 bg-[#0d0d12]/80">
+                    <div className="space-y-1">
+                      <span className="text-base font-bold text-white block">Passes Quantity</span>
+                      <span className="text-sm text-slate-200 block">Limit 10 passes per registration session.</span>
                     </div>
-                    <div className="flex items-center space-x-3.5">
+                    <div className="flex items-center space-x-4">
                       <button
                         type="button"
                         onClick={() => handleQuantityChange(-1)}
                         disabled={quantity <= 1}
-                        className="w-8 h-8 rounded-lg bg-white/2 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/5 transition-all"
+                        className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-200 hover:text-white disabled:opacity-25 disabled:cursor-not-allowed hover:bg-white/10 transition-all"
                       >
-                        <Minus className="w-4 h-4" />
+                        <Minus className="w-4.5 h-4.5" />
                       </button>
-                      <span className="w-6 text-center font-mono font-bold text-sm text-white">
+                      <span className="w-8 text-center font-mono font-bold text-lg text-white">
                         {quantity}
                       </span>
                       <button
                         type="button"
                         onClick={() => handleQuantityChange(1)}
                         disabled={quantity >= 10}
-                        className="w-8 h-8 rounded-lg bg-white/2 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/5 transition-all"
+                        className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-200 hover:text-white disabled:opacity-25 disabled:cursor-not-allowed hover:bg-white/10 transition-all"
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-4.5 h-4.5" />
                       </button>
                     </div>
                   </div>
 
                   {/* Promo Code Input */}
-                  <div className="p-4 rounded-xl border border-white/5 bg-[#0d0d10]/60 space-y-3">
+                  <div className="p-5 rounded-xl border border-white/15 bg-[#0d0d12]/80 space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="space-y-0.5">
-                        <span className="text-xs font-bold text-white">Promo Code</span>
-                        <span className="text-[10px] text-slate-500 block">Enter code to apply a discount.</span>
+                      <div className="space-y-1">
+                        <span className="text-base font-bold text-white block">Promo Code</span>
+                        <span className="text-sm text-slate-200 block">Enter code to apply a discount.</span>
                       </div>
                       {appliedPromoCode && (
                         <button
                           type="button"
                           onClick={handleRemovePromo}
-                          className="text-[10px] text-red-400 hover:text-red-300 font-mono underline cursor-pointer"
+                          className="text-sm text-red-400 hover:text-red-300 font-mono font-bold underline cursor-pointer"
                         >
                           REMOVE
                         </button>
@@ -726,44 +726,42 @@ export default function TicketsPage() {
                         value={promoCodeInput}
                         onChange={(e) => setPromoCodeInput(e.target.value)}
                         placeholder="ENTER CODE"
-                        className="flex-1 bg-black/45 border border-white/5 focus:border-thunder-blue rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-800 font-mono uppercase"
+                        className="flex-1 bg-[#0f0f12] border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3 text-base text-white focus:outline-none transition-all placeholder:text-slate-400 font-mono uppercase"
                       />
                       <button
                         type="button"
                         onClick={handleApplyPromo}
                         disabled={!!appliedPromoCode}
-                        className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold font-mono tracking-wider border border-white/10 transition-all disabled:opacity-45 disabled:cursor-not-allowed cursor-pointer"
+                        className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-sm font-bold font-mono tracking-wider border border-white/20 transition-all disabled:opacity-45 disabled:cursor-not-allowed cursor-pointer text-white"
                       >
                         APPLY
                       </button>
                     </div>
                     {promoError && (
-                      <p className="text-[10px] text-red-400 font-mono">{promoError}</p>
+                      <p className="text-sm text-red-400 font-mono font-bold">{promoError}</p>
                     )}
                     {promoSuccess && (
-                      <p className="text-[10px] text-emerald-400 font-mono">{promoSuccess}</p>
+                      <p className="text-sm text-emerald-400 font-mono font-bold">{promoSuccess}</p>
                     )}
                   </div>
 
                   {/* CyberCaptcha verification */}
                   <CyberCaptcha onVerify={handleCaptchaVerify} />
 
-
-
                   {/* Pay button */}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-4 py-4 rounded-xl bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg text-xs font-bold font-mono tracking-widest uppercase flex items-center justify-center space-x-2 border border-thunder-blue/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                    className="w-full mt-4 py-4 rounded-xl bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg text-sm font-bold font-mono tracking-widest uppercase flex items-center justify-center space-x-2 border border-thunder-blue/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {loading ? (
                       <>
-                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        <RefreshCw className="w-5 h-5 animate-spin" />
                         <span>PROCESSING_PAYMENT_INIT...</span>
                       </>
                     ) : (
                       <>
-                        <CreditCard className="w-4 h-4" />
+                        <CreditCard className="w-5 h-5" />
                         <span>PROCEED_TO_GATEWAY (₹{total.toLocaleString("en-IN")})</span>
                       </>
                     )}
@@ -778,7 +776,7 @@ export default function TicketsPage() {
               <div className="glass-panel rounded-2xl p-6 md:p-8 space-y-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-36 h-36 bg-thunder-cyan/5 blur-3xl rounded-full pointer-events-none" />
 
-                <h3 className="text-xs font-mono tracking-wider text-slate-400 uppercase">
+                <h3 className="text-sm font-mono tracking-wider text-slate-200 uppercase font-bold">
                   ORDER INVOICE SUMMARY
                 </h3>
 
@@ -786,25 +784,25 @@ export default function TicketsPage() {
                   {/* Selected Pass tier */}
                   <div className="p-4 rounded-xl border border-white/5 bg-white/2 flex items-start justify-between">
                     <div>
-                      <span className="text-xs font-bold text-white block">{selectedTier.name}</span>
-                      <span className="text-[10px] text-slate-500 block mt-0.5">₹{unitPrice.toLocaleString("en-IN")} each</span>
+                      <span className="text-sm font-bold text-white block">{selectedTier.name}</span>
+                      <span className="text-xs text-slate-200 block mt-1">₹{unitPrice.toLocaleString("en-IN")} each</span>
                     </div>
-                    <span className="font-mono text-xs font-bold text-white">
+                    <span className="font-mono text-sm font-bold text-white">
                       x{quantity}
                     </span>
                   </div>
 
                   {/* Financial breakdown */}
-                  <div className="space-y-2.5 text-xs font-mono border-b border-white/5 pb-4">
-                    <div className="flex items-center justify-between text-slate-400">
+                  <div className="space-y-2.5 text-sm font-mono border-b border-white/5 pb-4">
+                    <div className="flex items-center justify-between text-slate-200 font-medium">
                       <span>Passes Subtotal</span>
                       <span>₹{subtotal.toLocaleString("en-IN")}</span>
                     </div>
-                    <div className="flex items-center justify-between text-slate-400">
+                    <div className="flex items-center justify-between text-slate-200 font-medium">
                       <span className="flex items-center">
                         Convenience Fee ({(CONVENIENCE_FEE_PERCENT * 100)}%)
                         <span title="Gateway integration processing convenience charges.">
-                          <Info className="w-3 h-3 ml-1 text-slate-600 cursor-help" />
+                          <Info className="w-3.5 h-3.5 ml-1 text-slate-400 cursor-help" />
                         </span>
                       </span>
                       <span>₹{fees.toLocaleString("en-IN")}</span>
@@ -814,12 +812,12 @@ export default function TicketsPage() {
                   {/* Grand total */}
                   <div className="flex items-end justify-between">
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 block uppercase tracking-wider">
+                      <span className="text-xs font-mono text-slate-250 block uppercase tracking-wider font-bold">
                         Amount Payable
                       </span>
-                      <span className="text-xs text-slate-400 font-mono">Includes taxes</span>
+                      <span className="text-sm text-slate-300 font-mono">Includes taxes</span>
                     </div>
-                    <span className="text-2xl font-extrabold text-white font-mono">
+                    <span className="text-3xl font-extrabold text-white font-mono">
                       ₹{total.toLocaleString("en-IN")}
                     </span>
                   </div>
@@ -828,13 +826,13 @@ export default function TicketsPage() {
 
               {/* Pass benefits list */}
               <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0a0c]/40 space-y-4">
-                <h4 className="text-xs font-bold font-mono tracking-wider text-slate-400 uppercase flex items-center">
-                  <Award className="w-4 h-4 text-thunder-cyan mr-1.5" />
+                <h4 className="text-sm font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
+                  <Award className="w-4.5 h-4.5 text-thunder-cyan mr-1.5" />
                   Your Ticket Inclusions
                 </h4>
                 <ul className="space-y-3">
                   {selectedTier.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start space-x-2.5 text-xs text-slate-300">
+                    <li key={idx} className="flex items-start space-x-2.5 text-sm text-slate-200">
                       <Check className="w-4 h-4 text-thunder-cyan mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
@@ -854,11 +852,11 @@ export default function TicketsPage() {
             </div>
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-white">Verifying Transaction Signature</h3>
-              <p className="text-xs text-slate-400 font-mono tracking-widest animate-pulse">
+              <p className="text-sm text-slate-200 font-mono tracking-widest animate-pulse">
                 COMMITTING_TRANSACTION_RECORDS...
               </p>
             </div>
-            <p className="text-[11px] text-slate-500 max-w-xs leading-relaxed">
+            <p className="text-sm text-slate-300 max-w-xs leading-relaxed">
               Our secure node validator is checking the cryptographic signature payload and syncing your details to the gateway engine database.
             </p>
               </div>
@@ -874,12 +872,12 @@ export default function TicketsPage() {
               </div>
               <div className="space-y-1.5">
                 <h2 className="text-2xl font-extrabold text-white">Payment Verified Successfully!</h2>
-                <p className="text-xs text-slate-400 font-sans max-w-md mx-auto">
+                <p className="text-sm text-slate-200 font-sans max-w-md mx-auto">
                   Your registration is confirmed. A notification message has been sent to the secure audit logger. You can inspect your digital entry pass below.
                 </p>
               </div>
               {/* Highlight summary badge */}
-              <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-xl bg-white/2 border border-white/5 text-xs text-slate-300 font-mono">
+              <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-xl bg-white/2 border border-white/5 text-sm text-slate-200 font-mono">
                 <span>Registration ID:</span>
                 <span className="text-thunder-cyan font-bold uppercase">{registrationId}</span>
               </div>
@@ -888,11 +886,11 @@ export default function TicketsPage() {
             {/* Canvas Ticket Container */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-mono tracking-wider text-slate-400 uppercase flex items-center">
+                <h3 className="text-sm font-mono tracking-wider text-slate-200 uppercase flex items-center">
                   <Terminal className="w-4 h-4 text-thunder-blue mr-2" />
                   Your Cryptographic Entry Ticket
                 </h3>
-                <span className="text-[10px] font-mono text-slate-500 uppercase">
+                <span className="text-xs font-mono text-slate-300 uppercase">
                   PNG FORMAT // 800 x 400 PX
                 </span>
               </div>
@@ -911,14 +909,14 @@ export default function TicketsPage() {
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <button
                   onClick={handleDownloadTicket}
-                  className="flex-1 py-4 rounded-xl bg-thunder-cyan hover:bg-thunder-cyan-dark text-black font-bold font-mono tracking-widest text-xs uppercase flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all cursor-pointer border border-thunder-cyan/40"
+                  className="flex-1 py-4 rounded-xl bg-thunder-cyan hover:bg-thunder-cyan-dark text-black font-bold font-mono tracking-widest text-sm uppercase flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all cursor-pointer border border-thunder-cyan/40"
                 >
                   <Download className="w-4.5 h-4.5" />
                   <span>Download E-Ticket (PNG)</span>
                 </button>
                 <button
                   onClick={handleResetForm}
-                  className="py-4 px-8 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white transition-all text-xs font-bold font-mono tracking-widest uppercase cursor-pointer"
+                  className="py-4 px-8 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-slate-200 hover:text-white transition-all text-sm font-bold font-mono tracking-widest uppercase cursor-pointer"
                 >
                   Register Another Ticket
                 </button>
@@ -926,12 +924,12 @@ export default function TicketsPage() {
             </div>
 
             {/* Local Storage Info Alert */}
-            <div className="p-4 rounded-xl border border-white/5 bg-[#0a0a0c]/60 space-y-2 text-xs text-slate-400">
-              <span className="font-bold text-slate-300 flex items-center">
+            <div className="p-4 rounded-xl border border-white/5 bg-[#0a0a0c]/60 space-y-2 text-sm text-slate-300">
+              <span className="font-bold text-slate-100 flex items-center">
                 <Shield className="w-4 h-4 text-thunder-blue mr-1.5" />
                 Data Storage Core Information
               </span>
-              <p className="leading-relaxed font-sans">
+              <p className="leading-relaxed font-sans text-slate-200">
                 Your purchase receipt has been successfully committed to the database store at <code>src/data/registrations.json</code>. The signature ID matches the generated entry QR block and will be validated during physical check-in at the conference venue gate scanner.
               </p>
             </div>
