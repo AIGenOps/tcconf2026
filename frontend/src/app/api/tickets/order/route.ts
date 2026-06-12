@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     }
 
     // 2. Anti-spam CAPTCHA verification (Cloudflare Turnstile)
-    const turnstileSecret = "0x4AAAAAADjiMQaK5AwuLG4_DLusdkWmCek";
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY || "0x4AAAAAADjiMQaK5AwuLG4_DLusdkWmCek";
     try {
       const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
         method: "POST",

@@ -10,7 +10,7 @@ interface TurnstileProps {
 export default function Turnstile({ onVerify }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
-  const siteKey = "0x4AAAAAADjiMXDrT_CEWOcO";
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAADjiMXDrT_CEWOcO";
 
   useEffect(() => {
     const renderWidget = () => {
