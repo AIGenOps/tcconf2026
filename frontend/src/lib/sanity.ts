@@ -119,7 +119,7 @@ const mockScheduleDay2: ScheduleItem[] = [
 export async function getSpeakers(): Promise<Speaker[]> {
   if (sanityClient) {
     try {
-      const query = `*[_type == "speaker"] { name, designation, company, category, bio, linkedin }`;
+      const query = `*[_type == "speaker"] { name, designation, company, category, bio, linkedin, avatar }`;
       const speakers = await sanityClient.fetch(query);
       if (speakers && speakers.length > 0) return speakers;
     } catch (err) {

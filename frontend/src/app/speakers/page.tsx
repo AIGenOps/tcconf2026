@@ -73,19 +73,35 @@ export default async function SpeakersPage() {
                   
                   <div className="space-y-6">
                     {/* Head Header */}
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-1">
-                        <span className="text-xs font-mono text-thunder-cyan uppercase tracking-wider font-semibold">
-                          KEYNOTE PRESENTER
-                        </span>
-                        <h3 className="text-2xl font-bold text-white tracking-wide">{speaker.name}</h3>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                        {/* Avatar */}
+                        <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 flex-shrink-0 bg-white/5">
+                          {speaker.avatar ? (
+                            <img
+                              src={speaker.avatar}
+                              alt={speaker.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-xs font-bold bg-[#070913]">
+                              TC
+                            </div>
+                          )}
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-xs font-mono text-thunder-cyan uppercase tracking-wider font-semibold">
+                            KEYNOTE PRESENTER
+                          </span>
+                          <h3 className="text-2xl font-bold text-white tracking-wide">{speaker.name}</h3>
+                        </div>
                       </div>
                       {speaker.linkedin && (
                         <a
                           href={speaker.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 rounded-full border border-white/5 bg-white/2 text-slate-400 hover:text-white transition-all"
+                          className="p-2 rounded-full border border-white/5 bg-white/2 text-slate-400 hover:text-white transition-all flex-shrink-0"
                           aria-label="LinkedIn"
                         >
                           <Linkedin className="w-4 h-4" />
@@ -125,18 +141,34 @@ export default async function SpeakersPage() {
                 >
                   <div className="space-y-4">
                     <div className="flex justify-between items-start">
-                      <div className="space-y-0.5">
-                        <h4 className="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">
-                          {speaker.name}
-                        </h4>
-                        <span className="text-[10px] font-mono text-slate-500 uppercase">{speaker.company}</span>
+                      <div className="flex items-center space-x-3.5">
+                        {/* Avatar */}
+                        <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex-shrink-0 bg-white/5">
+                          {speaker.avatar ? (
+                            <img
+                              src={speaker.avatar}
+                              alt={speaker.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-[9px] bg-[#070913]">
+                              TC
+                            </div>
+                          )}
+                        </div>
+                        <div className="space-y-0.5">
+                          <h4 className="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">
+                            {speaker.name}
+                          </h4>
+                          <span className="text-[10px] font-mono text-slate-500 uppercase">{speaker.company}</span>
+                        </div>
                       </div>
                       {speaker.linkedin && (
                         <a
                           href={speaker.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-white transition-colors"
+                          className="text-slate-500 hover:text-white transition-colors pt-1 flex-shrink-0"
                         >
                           <Linkedin className="w-4 h-4" />
                         </a>
@@ -171,18 +203,34 @@ export default async function SpeakersPage() {
                 >
                   <div className="space-y-4">
                     <div className="flex justify-between items-start">
-                      <div className="space-y-0.5">
-                        <h4 className="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">
-                          {speaker.name}
-                        </h4>
-                        <span className="text-[10px] font-mono text-slate-500 uppercase">{speaker.company}</span>
+                      <div className="flex items-center space-x-3.5">
+                        {/* Avatar */}
+                        <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex-shrink-0 bg-white/5">
+                          {speaker.avatar ? (
+                            <img
+                              src={speaker.avatar}
+                              alt={speaker.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-[9px] bg-[#070913]">
+                              TC
+                            </div>
+                          )}
+                        </div>
+                        <div className="space-y-0.5">
+                          <h4 className="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">
+                            {speaker.name}
+                          </h4>
+                          <span className="text-[10px] font-mono text-slate-500 uppercase">{speaker.company}</span>
+                        </div>
                       </div>
                       {speaker.linkedin && (
                         <a
                           href={speaker.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-white transition-colors"
+                          className="text-slate-500 hover:text-white transition-colors pt-1 flex-shrink-0"
                         >
                           <Linkedin className="w-4 h-4" />
                         </a>
