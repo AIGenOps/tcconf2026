@@ -8,7 +8,7 @@ import {
   Download, CheckCircle, Info, RefreshCw, Smartphone, Building, User, Mail
 } from "lucide-react";
 import confetti from "canvas-confetti";
-import Turnstile from "@/components/ui/Turnstile";
+import CyberCaptcha from "@/components/ui/CyberCaptcha";
 import { TICKET_TIERS, CONVENIENCE_FEE_PERCENT, calculateTotal, VALID_PROMO_CODES } from "@/lib/tickets";
 
 export default function TicketsPage() {
@@ -745,8 +745,8 @@ export default function TicketsPage() {
                     )}
                   </div>
 
-                  {/* Cloudflare Turnstile Verification */}
-                  <Turnstile onVerify={handleCaptchaVerify} />
+                  {/* CyberCaptcha verification */}
+                  <CyberCaptcha onVerify={handleCaptchaVerify} />
 
 
 

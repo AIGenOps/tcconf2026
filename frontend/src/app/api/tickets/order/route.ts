@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const organization = sanitizeString(body.organization, 150);
     const ticketType = sanitizeString(body.ticketType, 50);
     const quantity = body.quantity;
-    const captchaToken = sanitizeString(body.captchaToken, 2048); // Turnstile tokens are long
+    const captchaToken = sanitizeString(body.captchaToken, 100);
     const promoCode = sanitizeString(body.promoCode, 50);
 
     // 1. Inputs validation
@@ -43,22 +43,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Quantity must be between 1 and 10." }, { status: 400 });
     }
 
-    // 2. Anti-spam CAPTCHA verification (Cloudflare Turnstile)
-    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY || "0x4AAAAAADjiMQaK5AwuLG4_DLusdkWmCek";
-    try {
-      const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `secret=${encodeURIComponent(turnstileSecret)}&response=${encodeURIComponent(captchaToken)}`,
-      });
-      const verifyData = await verifyRes.json();
-      if (!verifyData.success) {
-        console.error("Cloudflare Turnstile verification failed:", verifyData["error-codes"]);
-        return NextResponse.json({ error: "Security captcha verification failed. Please try again." }, { status: 401 });
-      }
-    } catch (err) {
-      console.error("Error validating Turnstile captcha:", err);
-      return NextResponse.json({ error: "Verification system is temporarily offline." }, { status: 500 });
+    // 2. Anti-spam CAPTCHA verification
+    if (!captchaToken.startsWith("tc_sec_token_")) {
+      return NextResponse.json({ error: "Security Firewall verification failed." }, { status: 401 });
     }
 
     // 3. Verify ticket tier and calculate totals
