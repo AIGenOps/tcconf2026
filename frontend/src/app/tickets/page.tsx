@@ -839,6 +839,36 @@ export default function TicketsPage() {
                   ))}
                 </ul>
               </div>
+
+              {/* Guidelines & Terms */}
+              <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0a0c]/40 space-y-4">
+                <h4 className="text-sm font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
+                  <Shield className="w-4.5 h-4.5 text-thunder-blue mr-1.5" />
+                  Important Guidelines
+                </h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2.5 text-sm text-slate-200">
+                    <div className="w-1.5 h-1.5 rounded-full bg-thunder-blue mt-2 flex-shrink-0" />
+                    <span>All tickets are strictly <strong>non-refundable</strong>. However, passes can be transferred to another eligible delegate.</span>
+                  </li>
+                  {selectedTierId === "student" && (
+                    <li className="flex items-start space-x-2.5 text-sm text-amber-400 border border-amber-500/25 bg-amber-500/5 p-3 rounded-lg">
+                      <AlertCircle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <span>
+                        <strong>Student Verification:</strong> Student Pass holders must carry a valid physical student college ID card. If not found or invalid at the check-in desk, you will have to upgrade to a Standard Pass by paying the ticket price difference.
+                      </span>
+                    </li>
+                  )}
+                  <li className="flex items-start space-x-2.5 text-sm text-slate-200">
+                    <div className="w-1.5 h-1.5 rounded-full bg-thunder-blue mt-2 flex-shrink-0" />
+                    <span>Please ensure your registered email is active, as your secure digital entry pass will be dispatched to this address.</span>
+                  </li>
+                  <li className="flex items-start space-x-2.5 text-sm text-slate-200">
+                    <div className="w-1.5 h-1.5 rounded-full bg-thunder-blue mt-2 flex-shrink-0" />
+                    <span>Organizers reserve the right to verify credentials and deny entry in case of falsified information or security violations.</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         )}
