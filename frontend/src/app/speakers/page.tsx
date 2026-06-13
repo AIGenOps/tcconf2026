@@ -61,7 +61,7 @@ export default async function SpeakersPage() {
           <div className="space-y-8">
             <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
               <HugeiconsIcon icon={Award01Icon} className="w-4.5 h-4.5 text-yellow-400" />
-              <span>CATEGORY_STREAM: KEYNOTE_SPEAKERS</span>
+              <span>Keynote Speakers</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -131,7 +131,7 @@ export default async function SpeakersPage() {
           <div className="space-y-8">
             <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
               <HugeiconsIcon icon={Shield01Icon} className="w-4.5 h-4.5 text-thunder-cyan animate-pulse" />
-              <span>CATEGORY_STREAM: CXO_PANELISTS</span>
+              <span>CXO Panelists</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -193,7 +193,7 @@ export default async function SpeakersPage() {
           <div className="space-y-8">
             <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
               <HugeiconsIcon icon={UserGroupIcon} className="w-4 h-4 text-thunder-blue" />
-              <span>CATEGORY_STREAM: TECHNICAL_SHOWCASE</span>
+              <span>Technical Showcase</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
