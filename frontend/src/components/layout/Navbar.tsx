@@ -46,7 +46,10 @@ export default function Navbar() {
             : "top-0 px-4 md:px-8 py-4"
         }`}
       >
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className={`mx-auto flex items-center justify-between px-4 sm:px-6 py-3 transition-all duration-500 max-w-5xl ${
             scrolled
               ? "border-none bg-transparent"
@@ -107,7 +110,7 @@ export default function Navbar() {
               {mobileMenuOpen ? <HugeiconsIcon icon={Cancel01Icon} className="w-6 h-6" /> : <HugeiconsIcon icon={Menu01Icon} className="w-6 h-6" />}
             </button>
           </div>
-        </div>
+        </motion.div>
       </header>
 
       {/* Mobile Menu Fullscreen Overlay */}
