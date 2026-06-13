@@ -36,7 +36,7 @@ function StatCounter({ value, suffix, label, sublabel }: StatItemProps) {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-center p-8 rounded-2xl bg-card border border-white/5 relative overflow-hidden group hover:border-thunder-blue/30 transition-all duration-500"
+      className="flex flex-col items-center justify-center p-6 sm:p-8 rounded-2xl bg-card border border-white/5 relative overflow-hidden group hover:border-thunder-blue/30 transition-all duration-500"
     >
       {/* Decorative hover light */}
       <div className="absolute inset-0 bg-gradient-to-b from-thunder-blue/0 to-thunder-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -49,7 +49,7 @@ function StatCounter({ value, suffix, label, sublabel }: StatItemProps) {
         <span className="text-xs font-bold font-mono tracking-widest text-slate-300 uppercase mt-4">
           {label}
         </span>
-        <span className="text-[10px] text-slate-500 font-mono tracking-wider mt-1 uppercase">
+        <span className="text-xs text-slate-350 font-mono tracking-wider mt-1 uppercase">
           {sublabel}
         </span>
       </div>

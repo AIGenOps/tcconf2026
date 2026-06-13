@@ -29,7 +29,7 @@ function GlowCard({ icon, title, description }: CardItem) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative overflow-hidden rounded-2xl border border-white/5 bg-card/40 p-8 backdrop-blur-sm transition-all duration-300 hover:border-thunder-blue/30 flex flex-col justify-between min-h-[260px] group"
+      className="relative overflow-hidden rounded-2xl border border-white/5 bg-card/40 p-6 sm:p-8 backdrop-blur-sm transition-all duration-300 hover:border-thunder-blue/30 flex flex-col justify-between min-h-[260px] group"
     >
       {/* Dynamic Cursor Light Spot */}
       {isHovered && (
@@ -62,7 +62,7 @@ function GlowCard({ icon, title, description }: CardItem) {
         </h3>
         
         {/* Description */}
-        <p className="text-slate-400 text-xs leading-relaxed font-sans">
+        <p className="text-slate-200 text-sm leading-relaxed font-sans">
           {description}
         </p>
       </div>
@@ -105,7 +105,7 @@ export default function WhyAttend() {
   ];
 
   return (
-    <section className="relative z-10 max-w-7xl mx-auto py-24 px-6 md:px-8" id="why-attend">
+    <section className="relative z-10 max-w-7xl mx-auto py-16 sm:py-24 px-4 sm:px-6 md:px-8" id="why-attend">
       {/* Title block */}
       <div className="text-center space-y-3 mb-16 scroll-reveal">
         <span className="text-xs font-mono font-bold tracking-[0.3em] text-thunder-cyan uppercase">

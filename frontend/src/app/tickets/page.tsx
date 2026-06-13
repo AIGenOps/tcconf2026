@@ -537,7 +537,7 @@ export default function TicketsPage() {
                   <Terminal className="w-4.5 h-4.5 text-thunder-blue mr-2" />
                   Step 01: Select Access Level
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {Object.values(TICKET_TIERS).map((tier) => {
                     const isSelected = selectedTierId === tier.id;
                     const discount = Math.round(((tier.originalPrice - tier.price) / tier.originalPrice) * 100);
@@ -591,6 +591,58 @@ export default function TicketsPage() {
                       </button>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* Mobile Order Invoice Summary (Only visible on mobile/tablet) */}
+              <div className="block lg:hidden glass-panel rounded-2xl p-6 space-y-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-36 h-36 bg-thunder-cyan/5 blur-3xl rounded-full pointer-events-none" />
+
+                <h3 className="text-sm font-mono tracking-wider text-slate-200 uppercase font-bold">
+                  ORDER INVOICE SUMMARY
+                </h3>
+
+                <div className="space-y-4">
+                  {/* Selected Pass tier */}
+                  <div className="p-4 rounded-xl border border-white/5 bg-white/2 flex items-start justify-between">
+                    <div>
+                      <span className="text-sm font-bold text-white block">{selectedTier.name}</span>
+                      <span className="text-xs text-slate-200 block mt-1">₹{unitPrice.toLocaleString("en-IN")} each</span>
+                    </div>
+                    <span className="font-mono text-sm font-bold text-white">
+                      x{quantity}
+                    </span>
+                  </div>
+
+                  {/* Financial breakdown */}
+                  <div className="space-y-2.5 text-sm font-mono border-b border-white/5 pb-4">
+                    <div className="flex items-center justify-between text-slate-200 font-medium">
+                      <span>Passes Subtotal</span>
+                      <span>₹{subtotal.toLocaleString("en-IN")}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-slate-200 font-medium">
+                      <span className="flex items-center">
+                        Convenience Fee ({(CONVENIENCE_FEE_PERCENT * 100)}%)
+                        <span title="Gateway integration processing convenience charges.">
+                          <Info className="w-3.5 h-3.5 ml-1 text-slate-400 cursor-help" />
+                        </span>
+                      </span>
+                      <span>₹{fees.toLocaleString("en-IN")}</span>
+                    </div>
+                  </div>
+
+                  {/* Grand total */}
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <span className="text-xs font-mono text-slate-250 block uppercase tracking-wider font-bold">
+                        Amount Payable
+                      </span>
+                      <span className="text-sm text-slate-300 font-mono">Includes taxes</span>
+                    </div>
+                    <span className="text-3xl font-extrabold text-white font-mono">
+                      ₹{total.toLocaleString("en-IN")}
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -773,7 +825,7 @@ export default function TicketsPage() {
             {/* Right/Sidebar Panel: Pricing details invoice & Features list */}
             <div className="lg:col-span-5 space-y-6">
               {/* Checkout details invoice card */}
-              <div className="glass-panel rounded-2xl p-6 md:p-8 space-y-6 relative overflow-hidden">
+              <div className="hidden lg:block glass-panel rounded-2xl p-6 md:p-8 space-y-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-36 h-36 bg-thunder-cyan/5 blur-3xl rounded-full pointer-events-none" />
 
                 <h3 className="text-sm font-mono tracking-wider text-slate-200 uppercase font-bold">

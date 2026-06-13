@@ -48,7 +48,7 @@ function FAQAccordion({ question, answer, isOpen, onToggle }: FAQItem & { isOpen
           <HelpCircle className="w-4.5 h-4.5 text-thunder-cyan group-hover:scale-110 transition-transform duration-300" />
           <span>{question}</span>
         </span>
-        <span className="p-1.5 rounded-full border border-white/5 bg-white/2 text-slate-400 group-hover:text-white transition-all duration-300">
+        <span className="p-1.5 rounded-full border border-white/5 bg-white/2 text-slate-200 group-hover:text-white transition-all duration-300">
           {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
         </span>
       </button>
@@ -62,7 +62,7 @@ function FAQAccordion({ question, answer, isOpen, onToggle }: FAQItem & { isOpen
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pt-2 pb-4 pl-7 text-xs sm:text-sm text-slate-400 leading-relaxed font-sans max-w-3xl">
+            <div className="pt-2 pb-4 pl-7 text-xs sm:text-sm text-slate-200 leading-relaxed font-sans max-w-3xl">
               {answer}
             </div>
           </motion.div>
@@ -97,7 +97,7 @@ export default function FAQ({ initialFAQs }: FAQProps) {
   };
 
   return (
-    <section className="relative z-10 py-24 px-6 md:px-8 border-t border-white/5" id="faq">
+    <section className="relative z-10 py-16 sm:py-24 px-4 sm:px-6 md:px-8 border-t border-white/5" id="faq">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center space-y-3 mb-16 scroll-reveal">

@@ -49,7 +49,7 @@ const mockVillages: VillageItem[] = [
 
 export default function Villages() {
   return (
-    <section className="relative z-10 max-w-7xl mx-auto py-20 px-6 md:px-8" id="villages">
+    <section className="relative z-10 max-w-7xl mx-auto py-16 sm:py-20 px-4 sm:px-6 md:px-8" id="villages">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 scroll-reveal">
         <div className="space-y-3">
@@ -59,7 +59,7 @@ export default function Villages() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Interactive Hacking Villages
           </h2>
-          <p className="text-slate-400 text-sm max-w-xl">
+          <p className="text-slate-200 text-sm max-w-xl">
             Step away from slides and slides. Try real lockpicking tools, hardware bypass boards, smart-contract exploits, and container escape scenarios in guided labs.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function Villages() {
         {mockVillages.map((village) => (
           <div
             key={village.id}
-            className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#070913]/30 p-8 backdrop-blur-sm transition-all duration-300 hover:border-thunder-blue/30 flex flex-col justify-between"
+            className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#070913]/30 p-6 sm:p-8 backdrop-blur-sm transition-all duration-300 hover:border-thunder-blue/30 flex flex-col justify-between"
           >
             {/* Spotlight background hover */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-thunder-blue/5 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -82,7 +82,7 @@ export default function Villages() {
                 <div className="p-3 bg-white/5 border border-white/10 rounded-xl max-w-max drop-shadow-sm">
                   {village.icon}
                 </div>
-                <span className="text-[9px] font-mono tracking-widest text-slate-500 border border-white/5 px-2.5 py-1 rounded-full bg-white/2">
+                <span className="text-xs font-mono tracking-widest text-slate-300 border border-white/5 px-2.5 py-1 rounded-full bg-white/2">
                   {village.difficulty}
                 </span>
               </div>
@@ -92,19 +92,19 @@ export default function Villages() {
                 <h3 className="text-lg font-bold tracking-wide text-white group-hover:text-thunder-cyan transition-colors">
                   {village.title}
                 </h3>
-                <p className="text-slate-400 text-xs leading-relaxed">
+                <p className="text-slate-200 text-sm leading-relaxed">
                   {village.description}
                 </p>
               </div>
 
               {/* Labs List */}
               <div className="space-y-2">
-                <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+                <span className="text-xs font-mono tracking-widest text-slate-300 uppercase font-bold">
                   Lab Scenarios
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   {village.labs.map((lab, i) => (
-                    <div key={i} className="flex items-center space-x-2 text-[11px] text-slate-300 font-mono">
+                    <div key={i} className="flex items-center space-x-2 text-xs text-slate-200 font-mono">
                       <span className="w-1 h-1 rounded-full bg-thunder-cyan" />
                       <span>{lab}</span>
                     </div>
@@ -113,7 +113,7 @@ export default function Villages() {
               </div>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-500">
+            <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-sm text-slate-300">
               <span>Village Code: {village.id.toUpperCase()}</span>
               <span className="flex items-center text-thunder-blue group-hover:text-white transition-colors duration-300 cursor-pointer font-semibold">
                 Learn More <ArrowRight className="w-3.5 h-3.5 ml-1" />

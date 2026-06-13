@@ -129,7 +129,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
   }, [initialSponsors, initialPartners]);
 
   return (
-    <section className="relative z-10 py-24 px-6 md:px-8 border-t border-white/5" id="sponsors">
+    <section className="relative z-10 py-16 sm:py-24 px-4 sm:px-6 md:px-8 border-t border-white/5" id="sponsors">
       {/* Title */}
       <div className="text-center space-y-3 mb-20 scroll-reveal">
         <span className="text-xs font-mono font-bold tracking-[0.3em] text-thunder-cyan uppercase">
@@ -145,7 +145,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
         
         {/* Sponsors Grid Section */}
         <div className="space-y-8">
-          <div className="flex items-center space-x-2 text-slate-400 font-mono text-[10px] tracking-widest uppercase justify-center">
+          <div className="flex items-center space-x-2 text-slate-400 font-mono text-xs tracking-widest uppercase justify-center font-bold">
             <Shield className="w-4 h-4 text-thunder-blue" />
             <span>CONFIRMED SUMMIT SPONSORS</span>
           </div>
@@ -189,11 +189,11 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-white uppercase tracking-wider">Sponsor Us</h4>
-                  <p className="text-[10px] text-slate-400 max-w-[200px] mx-auto">Promote your brand at the elite cybersecurity event.</p>
+                  <p className="text-xs text-slate-450 max-w-[200px] mx-auto">Promote your brand at the elite cybersecurity event.</p>
                 </div>
                 <Link
                   href="/sponsor"
-                  className="inline-flex items-center px-4 py-2 rounded-xl text-[9px] font-bold font-mono tracking-widest uppercase bg-thunder-blue text-white border border-thunder-blue/40 shadow-glow-blue transition-all"
+                  className="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-widest uppercase bg-thunder-blue text-white border border-thunder-blue/40 shadow-glow-blue transition-all"
                 >
                   Join as Sponsor
                 </Link>
@@ -204,7 +204,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
 
         {/* Community Partners Grid Section */}
         <div className="space-y-8">
-          <div className="flex items-center space-x-2 text-slate-400 font-mono text-[10px] tracking-widest uppercase justify-center">
+          <div className="flex items-center space-x-2 text-slate-400 font-mono text-xs tracking-widest uppercase justify-center font-bold">
             <Users className="w-4 h-4 text-thunder-cyan" />
             <span>COMMUNITY & ACADEMIC PARTNERS</span>
           </div>
@@ -248,11 +248,11 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-white uppercase tracking-wider">Partner with Us</h4>
-                  <p className="text-[10px] text-slate-400 max-w-[200px] mx-auto">Collaborate and build the cybersecurity community.</p>
+                  <p className="text-xs text-slate-450 max-w-[200px] mx-auto">Collaborate and build the cybersecurity community.</p>
                 </div>
                 <Link
                   href="/partner"
-                  className="inline-flex items-center px-4 py-2 rounded-xl text-[9px] font-bold font-mono tracking-widest uppercase bg-thunder-cyan text-[#030303] border border-thunder-cyan/40 shadow-glow-cyan transition-all"
+                  className="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-widest uppercase bg-thunder-cyan text-[#030303] border border-thunder-cyan/40 shadow-glow-cyan transition-all"
                 >
                   Join as Partner
                 </Link>

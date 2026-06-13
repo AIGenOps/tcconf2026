@@ -113,7 +113,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
               <h1 className="text-4xl font-extrabold text-white tracking-tight">
                 Timeline & Schedule
               </h1>
-              <p className="text-slate-400 text-sm max-w-lg">
+              <p className="text-slate-200 text-sm max-w-lg">
                 Plan your days at ThunderCipher. Day 1 focuses on Red Teaming & Offensive labs; Day 2 highlights Blue Team defense, smart-contract exploits, and CTF distribution.
               </p>
             </div>
@@ -127,7 +127,20 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
               className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-white/5 bg-white/2 hover:bg-white/5 text-slate-300 hover:text-white transition-all duration-300"
             >
               <Globe className="w-4 h-4 text-thunder-cyan" />
-              <span>Timezone: {timezone === "IST" ? "IST (GMT+5:30)" : `Local (${localOffset})`}</span>
+              <span>
+                <span className="hidden xs:inline">Timezone: </span>
+                {timezone === "IST" ? (
+                  <>
+                    <span className="hidden sm:inline">IST (GMT+5:30)</span>
+                    <span className="sm:hidden">IST</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="hidden sm:inline">Local ({localOffset})</span>
+                    <span className="sm:hidden">Local</span>
+                  </>
+                )}
+              </span>
             </button>
 
             {/* Print / PDF Trigger */}
@@ -229,7 +242,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                     
                     {/* Time readout */}
-                    <div className="flex items-center space-x-1.5 text-xs font-mono text-slate-400 print:text-black">
+                    <div className="flex items-center space-x-1.5 text-xs font-mono text-slate-200 print:text-black">
                       <Clock className="w-3.5 h-3.5 text-thunder-cyan print:text-black" />
                       <span className="font-semibold">{formatTime(item.time)}</span>
                     </div>
@@ -241,7 +254,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
                           LIVE
                         </span>
                       )}
-                      <span className="inline-block px-2 py-0.5 rounded text-[8px] font-bold font-mono tracking-widest bg-white/5 border border-white/5 text-slate-400 uppercase print:border-gray-300 print:text-gray-600">
+                      <span className="inline-block px-2 py-0.5 rounded text-xs font-bold font-mono tracking-widest bg-white/5 border border-white/10 text-slate-200 uppercase print:border-gray-300 print:text-gray-600">
                         {item.type}
                       </span>
                     </div>
@@ -254,7 +267,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
 
                   {/* Speaker */}
                   {item.speaker && (
-                    <div className="mt-3 text-xs text-slate-400 font-sans print:text-gray-700">
+                    <div className="mt-3 text-sm text-slate-300 font-sans print:text-gray-700">
                       Speaker: <span className="text-slate-200 font-semibold print:text-black">{item.speaker}</span>
                     </div>
                   )}

@@ -143,8 +143,8 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
               {/* Inputs Group */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center">
-                    <User className="w-3.5 h-3.5 mr-1.5 text-thunder-blue" /> Full Name
+                  <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
+                    <User className="w-4 h-4 mr-1.5 text-thunder-blue" /> Full Name
                   </label>
                   <input
                     type="text"
@@ -152,13 +152,13 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe"
-                    className="w-full bg-white/2 border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-sans"
+                    className="w-full bg-white/2 border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all placeholder:text-slate-400 font-sans"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center">
-                    <Mail className="w-3.5 h-3.5 mr-1.5 text-thunder-blue" /> Email Address
+                  <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
+                    <Mail className="w-4 h-4 mr-1.5 text-thunder-blue" /> Email Address
                   </label>
                   <input
                     type="email"
@@ -166,7 +166,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane@domain.com"
-                    className="w-full bg-white/2 border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-sans"
+                    className="w-full bg-white/2 border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all placeholder:text-slate-400 font-sans"
                   />
                 </div>
               </div>
@@ -175,8 +175,8 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
               {activeTab === "volunteer" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fadeIn">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center">
-                      <LinkIcon className="w-3.5 h-3.5 mr-1.5 text-thunder-blue" /> GitHub Profile
+                    <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
+                      <LinkIcon className="w-4 h-4 mr-1.5 text-thunder-blue" /> GitHub Profile
                     </label>
                     <input
                       type="url"
@@ -184,13 +184,13 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                       value={github}
                       onChange={(e) => setGithub(e.target.value)}
                       placeholder="https://github.com/username"
-                      className="w-full bg-white/2 border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-mono"
+                      className="w-full bg-white/2 border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all placeholder:text-slate-400 font-mono"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400 flex items-center">
-                      <Briefcase className="w-3.5 h-3.5 mr-1.5 text-thunder-blue" /> Primary Skills
+                    <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
+                      <Briefcase className="w-4 h-4 mr-1.5 text-thunder-blue" /> Primary Skills
                     </label>
                     <input
                       type="text"
@@ -198,7 +198,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                       value={skills}
                       onChange={(e) => setSkills(e.target.value)}
                       placeholder="e.g. React, Cyber Security, Writing"
-                      className="w-full bg-white/2 border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 font-sans"
+                      className="w-full bg-white/2 border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all placeholder:text-slate-400 font-sans"
                     />
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
 
               {/* Description/Message text block */}
               <div className="space-y-2">
-                <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                <label className="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold block">
                   {activeTab === "contact" ? "Inquiry Details" : "Tell Us About Yourself"}
                 </label>
                 <textarea
@@ -219,7 +219,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                       ? "Describe your inquiry here..."
                       : "Describe your experience and why you want to volunteer..."
                   }
-                  className="w-full bg-white/2 border border-white/5 focus:border-thunder-blue rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none transition-all placeholder:text-slate-700 resize-none font-sans"
+                  className="w-full bg-white/2 border border-white/25 focus:border-thunder-blue rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all placeholder:text-slate-400 resize-none font-sans"
                 />
               </div>
 
@@ -230,14 +230,14 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-xl text-xs font-bold tracking-widest font-mono uppercase bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg border border-thunder-blue/40 transition-all duration-300 disabled:opacity-50 cursor-pointer"
+                className="w-full inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-xl text-sm font-bold tracking-widest font-mono uppercase bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg border border-thunder-blue/40 transition-all duration-300 disabled:opacity-50 cursor-pointer"
               >
                 {loading ? (
                   <span>TRANSMITTING...</span>
                 ) : (
                   <>
                     <span>Submit Request</span>
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="w-4 h-4" />
                   </>
                 )}
               </button>
