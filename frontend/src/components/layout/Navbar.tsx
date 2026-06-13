@@ -39,15 +39,17 @@ export default function Navbar() {
     <>
       {/* Floating Centered Header Wrapper */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8 py-4 ${
-          scrolled ? "top-2" : "top-0"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-[#030303]/95 border-b border-white/10 py-2.5 px-4 md:px-8 shadow-lg backdrop-blur-md"
+            : "top-0 px-4 md:px-8 py-4"
         }`}
       >
         <div
-          className={`mx-auto flex items-center justify-between px-4 sm:px-6 py-3 rounded-full transition-all duration-500 max-w-5xl border ${
+          className={`mx-auto flex items-center justify-between px-4 sm:px-6 py-3 transition-all duration-500 max-w-5xl ${
             scrolled
-              ? "glass-panel shadow-[0_10px_30px_-10px_rgba(0,82,255,0.15)] border-white/10"
-              : "bg-[#0a0a0c]/85 border-white/5 backdrop-blur-md"
+              ? "border-none bg-transparent"
+              : "rounded-full border border-white/5 bg-[#0a0a0c]/85 backdrop-blur-md"
           }`}
         >
           {/* Logo (Unified inside the bar, left-aligned) */}
