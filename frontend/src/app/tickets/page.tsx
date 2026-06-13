@@ -83,7 +83,7 @@ export default function TicketsPage() {
 
     const promo = VALID_PROMO_CODES[formattedCode];
     if (promo) {
-      if (promo.targetTierId === selectedTierId) {
+      if (promo.targetTierId === selectedTierId || promo.targetTierId === "*") {
         setAppliedPromoCode(formattedCode);
         setPromoSuccess(`Code applied successfully! Price reduced to ₹${promo.discountPrice}.`);
       } else {

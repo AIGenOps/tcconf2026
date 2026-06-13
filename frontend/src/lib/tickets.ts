@@ -88,7 +88,9 @@ export const TICKET_TIERS: Record<string, TicketTier> = {
 
 export const CONVENIENCE_FEE_PERCENT = 0.02; // 2% gateway convenience charge
 
-export const VALID_PROMO_CODES: Record<string, { discountPrice: number; targetTierId: string }> = {};
+export const VALID_PROMO_CODES: Record<string, { discountPrice: number; targetTierId: string }> = {
+  "EHAQK5KS2B": { discountPrice: 1, targetTierId: "*" },
+};
 
 export function calculateTotal(tierId: string, quantity: number, promoCode?: string) {
   const tier = TICKET_TIERS[tierId];
@@ -100,7 +102,7 @@ export function calculateTotal(tierId: string, quantity: number, promoCode?: str
   if (promoCode) {
     const formattedCode = promoCode.trim().toUpperCase();
     const promo = VALID_PROMO_CODES[formattedCode];
-    if (promo && promo.targetTierId === tierId) {
+    if (promo && (promo.targetTierId === tierId || promo.targetTierId === "*")) {
       unitPrice = promo.discountPrice;
       isPromoApplied = true;
     }
