@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowLeft02Icon, GlobeIcon, PrinterIcon, TerminalIcon, Clock01Icon } from "@hugeicons/core-free-icons";
+import { ArrowLeft02Icon, GlobeIcon, PrinterIcon, Clock01Icon } from "@hugeicons/core-free-icons";
 import { ScheduleItem } from "@/lib/sanity";
 
 interface ScheduleClientProps {
@@ -17,9 +17,15 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
   const [timezone, setTimezone] = useState<"IST" | "LOCAL">("IST");
   const [localOffset, setLocalOffset] = useState("");
   
-  // Simulation variables
-  const [simulateLive, setSimulateLive] = useState(false);
-  const [simulatedTime, setSimulatedTime] = useState("11:00 AM"); // Simulated for Day 1
+  // Live tracking variables based on system time
+  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 30000); // update every 30s
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     setScheduleData(activeDay === 1 ? initialDay1Schedule : initialDay2Schedule);
@@ -71,10 +77,13 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
 
   // Check if a schedule slot is currently active
   const isCurrentSlot = (timeStr: string) => {
-    if (!simulateLive) return false;
+    const isConferenceDay1 = currentTime.getFullYear() === 2026 && currentTime.getMonth() === 9 && currentTime.getDate() === 3;
+    const isConferenceDay2 = currentTime.getFullYear() === 2026 && currentTime.getMonth() === 9 && currentTime.getDate() === 4;
+    
+    // Only track live if matching the active day tab
+    if (activeDay === 1 && !isConferenceDay1) return false;
+    if (activeDay === 2 && !isConferenceDay2) return false;
 
-    // Compare with simulatedTime "11:00 AM"
-    // e.g. "10:30 AM - 11:30 AM" includes 11:00 AM
     const parts = timeStr.split(" - ");
     if (parts.length !== 2) return false;
 
@@ -88,9 +97,11 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
 
     const start = parseToMin(parts[0]);
     const end = parseToMin(parts[1]);
-    const sim = parseToMin(simulatedTime);
+    
+    const istTime = new Date(currentTime.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+    const currentMin = istTime.getHours() * 60 + istTime.getMinutes();
 
-    return sim >= start && sim < end;
+    return currentMin >= start && currentMin < end;
   };
 
   return (
@@ -153,40 +164,6 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
               <span>Download PDF</span>
             </button>
           </div>
-        </div>
-
-        {/* Live Simulator Panel */}
-        <div className="p-4 rounded-2xl border border-white/5 bg-[#0a0a0c]/60 backdrop-blur-md flex flex-wrap items-center justify-between gap-4 text-xs font-mono print:hidden">
-          <div className="flex items-center space-x-3">
-            <HugeiconsIcon icon={TerminalIcon} className="w-4 h-4 text-thunder-cyan" />
-            <span className="text-slate-300">Simulate Live Tracking:</span>
-            <button
-              onClick={() => setSimulateLive(!simulateLive)}
-              className={`px-3 py-1 rounded-md border text-[10px] font-bold transition-all ${
-                simulateLive
-                  ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                  : "bg-white/5 border-white/10 text-slate-400"
-              }`}
-            >
-              {simulateLive ? "ON" : "OFF"}
-            </button>
-          </div>
-          {simulateLive && (
-            <div className="flex items-center space-x-2">
-              <span className="text-slate-500">Set Time:</span>
-              <select
-                value={simulatedTime}
-                onChange={(e) => setSimulatedTime(e.target.value)}
-                className="bg-slate-900 border border-white/10 rounded px-2 py-1 text-slate-300 focus:outline-none"
-              >
-                <option value="09:30 AM">09:30 AM (Reg)</option>
-                <option value="11:00 AM">11:00 AM (Keynote)</option>
-                <option value="12:00 PM">12:00 PM (Workshop)</option>
-                <option value="02:30 PM">02:30 PM (Villages)</option>
-                <option value="04:30 PM">04:30 PM (Closing)</option>
-              </select>
-            </div>
-          )}
         </div>
 
         {/* Day selection tabs */}
