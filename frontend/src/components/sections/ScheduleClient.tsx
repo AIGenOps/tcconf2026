@@ -133,27 +133,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
 
           {/* Action Tools */}
           <div className="flex items-center space-x-3 text-xs font-mono">
-            {/* Timezone Toggle */}
-            <button
-              onClick={() => setTimezone(timezone === "IST" ? "LOCAL" : "IST")}
-              className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-white/5 bg-white/2 hover:bg-white/5 text-slate-300 hover:text-white transition-all duration-300"
-            >
-              <HugeiconsIcon icon={GlobeIcon} className="w-4 h-4 text-thunder-cyan" />
-              <span>
-                <span className="hidden xs:inline">Timezone: </span>
-                {timezone === "IST" ? (
-                  <>
-                    <span className="hidden sm:inline">IST (GMT+5:30)</span>
-                    <span className="sm:hidden">IST</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="hidden sm:inline">Local ({localOffset})</span>
-                    <span className="sm:hidden">Local</span>
-                  </>
-                )}
-              </span>
-            </button>
+
 
             {/* Print / PDF Trigger */}
             <button
