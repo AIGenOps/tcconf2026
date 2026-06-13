@@ -253,3 +253,27 @@ html, body {
 @keyframes tcFadeBtn {
   to { opacity: 1; }
 }
+
+/* ── ICON VISIBILITY (HUGEICONS MIGRATION OPTIMIZATION) ── */
+svg:not([viewBox="0 0 873 657"]):not([viewBox="0 0 200 40"]) {
+  opacity: 0.43;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Restore opacity to 100% on hover/focus */
+a:hover svg,
+button:hover svg,
+.group:hover svg,
+[role="button"]:hover svg,
+label:hover svg {
+  opacity: 1;
+}
+
+/* Force full opacity for validation / success icons */
+.bg-emerald-500 svg,
+.text-emerald-400 svg,
+.text-emerald-500 svg,
+.text-yellow-400 svg {
+  opacity: 1 !important;
+}
+
