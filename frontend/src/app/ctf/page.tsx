@@ -63,7 +63,7 @@ export default function CTFPage() {
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
             <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4.5 h-4.5" />
-            <span>RETURN_TO_HOME</span>
+            <span>RETURN TO HOME</span>
           </Link>
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

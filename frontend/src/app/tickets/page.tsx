@@ -513,7 +513,7 @@ export default function TicketsPage() {
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-300 hover:text-thunder-cyan transition-colors"
           >
             <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4 h-4" />
-            <span>RETURN_TO_HOME</span>
+            <span>RETURN TO HOME</span>
           </Link>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div className="space-y-2">
