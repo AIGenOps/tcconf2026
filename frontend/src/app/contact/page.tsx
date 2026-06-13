@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
 import ContactForms from "@/components/sections/ContactForms";
 
 export default function ContactPage() {
@@ -18,7 +19,7 @@ export default function ContactPage() {
             href="/"
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>
           </Link>
         </div>

@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Calendar, MapPin, Award } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Calendar01Icon, Location01Icon } from "@hugeicons/core-free-icons";
 
 interface TimeLeft {
   days: number;
@@ -60,11 +61,11 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-4 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-xs font-mono tracking-widest text-slate-300 backdrop-blur-md"
         >
           <span className="flex items-center text-thunder-cyan">
-            <Calendar className="w-3.5 h-3.5 mr-1.5" /> 3rd - 4th October 2026
+            <HugeiconsIcon icon={Calendar01Icon} className="w-3.5 h-3.5 mr-1.5" /> 3rd - 4th October 2026
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-white/20 hidden sm:inline" />
           <span className="flex items-center text-slate-300">
-            <MapPin className="w-3.5 h-3.5 mr-1.5" /> Sharda University
+            <HugeiconsIcon icon={Location01Icon} className="w-3.5 h-3.5 mr-1.5" /> Sharda University
           </span>
         </motion.div>
 

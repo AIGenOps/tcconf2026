@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Shield, Sparkles, Zap, Users, ArrowUpRight, Plus } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Shield01Icon, ArrowUpRight01Icon, Add01Icon, UserGroupIcon } from "@hugeicons/core-free-icons";
 import { getSponsors, getPartners, Sponsor, Partner } from "@/lib/sanity";
 
 // Proper corporate styled SVG logo components
@@ -146,7 +147,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
         {/* Sponsors Grid Section */}
         <div className="space-y-8">
           <div className="flex items-center space-x-2 text-slate-400 font-mono text-xs tracking-widest uppercase justify-center font-bold">
-            <Shield className="w-4 h-4 text-thunder-blue" />
+            <HugeiconsIcon icon={Shield01Icon} className="w-4 h-4 text-thunder-blue" />
             <span>CONFIRMED SUMMIT SPONSORS</span>
           </div>
 
@@ -173,7 +174,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
                     className="inline-flex items-center space-x-1 text-thunder-cyan hover:underline hover:text-white transition-all"
                   >
                     <span>Visit Site</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <HugeiconsIcon icon={ArrowUpRight01Icon} className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
@@ -185,7 +186,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
             >
               <div className="relative z-10 flex flex-col items-center justify-center space-y-3">
                 <div className="p-2.5 rounded-full bg-thunder-blue/10 border border-thunder-blue/20 text-thunder-cyan">
-                  <Plus className="w-5 h-5 animate-pulse" />
+                  <HugeiconsIcon icon={Add01Icon} className="w-5 h-5 animate-pulse" />
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-white uppercase tracking-wider">Sponsor Us</h4>
@@ -205,7 +206,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
         {/* Community Partners Grid Section */}
         <div className="space-y-8">
           <div className="flex items-center space-x-2 text-slate-400 font-mono text-xs tracking-widest uppercase justify-center font-bold">
-            <Users className="w-4 h-4 text-thunder-cyan" />
+            <HugeiconsIcon icon={UserGroupIcon} className="w-4 h-4 text-thunder-cyan" />
             <span>COMMUNITY & ACADEMIC PARTNERS</span>
           </div>
 
@@ -232,7 +233,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
                     className="inline-flex items-center space-x-1 text-thunder-cyan hover:underline hover:text-white transition-all"
                   >
                     <span>Visit Site</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <HugeiconsIcon icon={ArrowUpRight01Icon} className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
@@ -244,7 +245,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
             >
               <div className="relative z-10 flex flex-col items-center justify-center space-y-3">
                 <div className="p-2.5 rounded-full bg-thunder-cyan/10 border border-thunder-cyan/20 text-thunder-cyan">
-                  <Plus className="w-5 h-5 animate-pulse" />
+                  <HugeiconsIcon icon={Add01Icon} className="w-5 h-5 animate-pulse" />
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-white uppercase tracking-wider">Partner with Us</h4>

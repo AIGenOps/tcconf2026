@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { 
-  ArrowLeft, Check, Shield, Award, Sparkles, Terminal, 
-  CreditCard, ChevronRight, Minus, Plus, AlertCircle, 
-  Download, CheckCircle, Info, RefreshCw, Smartphone, Building, User, Mail
-} from "lucide-react";
+  ArrowLeft02Icon, TerminalIcon, Checkmark, InformationCircleIcon, 
+  AlertCircleIcon, Remove01Icon, Add01Icon, Award01Icon, 
+  Shield01Icon, SparklesIcon, DownloadIcon 
+} from "@hugeicons/core-free-icons";
 import confetti from "canvas-confetti";
 import CyberCaptcha from "@/components/ui/CyberCaptcha";
 import { TICKET_TIERS, CONVENIENCE_FEE_PERCENT, calculateTotal, VALID_PROMO_CODES } from "@/lib/tickets";
@@ -511,7 +512,7 @@ export default function TicketsPage() {
             href="/"
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-300 hover:text-thunder-cyan transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>
           </Link>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
@@ -534,7 +535,7 @@ export default function TicketsPage() {
               {/* Ticket Tier Cards selection */}
               <div className="space-y-4">
                 <h3 className="text-base font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
-                  <Terminal className="w-4.5 h-4.5 text-thunder-blue mr-2" />
+                  <HugeiconsIcon icon={TerminalIcon} className="w-4.5 h-4.5 text-thunder-blue mr-2" />
                   Step 01: Select Access Level
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -585,7 +586,7 @@ export default function TicketsPage() {
                               ? "bg-thunder-blue border-thunder-blue text-white" 
                               : "border-white/30 text-transparent"
                           }`}>
-                            <Check className="w-4 h-4" />
+                            <HugeiconsIcon icon={Checkmark} className="w-4 h-4" />
                           </div>
                         </div>
                       </button>
@@ -624,7 +625,7 @@ export default function TicketsPage() {
                       <span className="flex items-center">
                         Convenience Fee ({(CONVENIENCE_FEE_PERCENT * 100)}%)
                         <span title="Gateway integration processing convenience charges.">
-                          <Info className="w-3.5 h-3.5 ml-1 text-slate-400 cursor-help" />
+                          <HugeiconsIcon icon={InformationCircleIcon} className="w-3.5 h-3.5 ml-1 text-slate-400 cursor-help" />
                         </span>
                       </span>
                       <span>₹{fees.toLocaleString("en-IN")}</span>
@@ -660,7 +661,7 @@ export default function TicketsPage() {
                 <form onSubmit={handleRegisterSubmit} className="space-y-5">
                   {error && (
                     <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-400 flex items-start space-x-2.5">
-                      <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                      <HugeiconsIcon icon={AlertCircleIcon} className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       <span>{error}</span>
                     </div>
                   )}
@@ -736,7 +737,7 @@ export default function TicketsPage() {
                         disabled={quantity <= 1}
                         className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-200 hover:text-white disabled:opacity-25 disabled:cursor-not-allowed hover:bg-white/10 transition-all"
                       >
-                        <Minus className="w-4.5 h-4.5" />
+                        <HugeiconsIcon icon={Remove01Icon} className="w-4.5 h-4.5" />
                       </button>
                       <span className="w-8 text-center font-mono font-bold text-lg text-white">
                         {quantity}
@@ -747,7 +748,7 @@ export default function TicketsPage() {
                         disabled={quantity >= 10}
                         className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-200 hover:text-white disabled:opacity-25 disabled:cursor-not-allowed hover:bg-white/10 transition-all"
                       >
-                        <Plus className="w-4.5 h-4.5" />
+                        <HugeiconsIcon icon={Add01Icon} className="w-4.5 h-4.5" />
                       </button>
                     </div>
                   </div>
@@ -842,7 +843,7 @@ export default function TicketsPage() {
                       <span className="flex items-center">
                         Convenience Fee ({(CONVENIENCE_FEE_PERCENT * 100)}%)
                         <span title="Gateway integration processing convenience charges.">
-                          <Info className="w-3.5 h-3.5 ml-1 text-slate-400 cursor-help" />
+                          <HugeiconsIcon icon={InformationCircleIcon} className="w-3.5 h-3.5 ml-1 text-slate-400 cursor-help" />
                         </span>
                       </span>
                       <span>₹{fees.toLocaleString("en-IN")}</span>
@@ -867,13 +868,13 @@ export default function TicketsPage() {
               {/* Pass benefits list */}
               <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0a0c]/40 space-y-4">
                 <h4 className="text-sm font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
-                  <Award className="w-4.5 h-4.5 text-thunder-cyan mr-1.5" />
+                  <HugeiconsIcon icon={Award01Icon} className="w-4.5 h-4.5 text-thunder-cyan mr-1.5" />
                   Your Ticket Inclusions
                 </h4>
                 <ul className="space-y-3">
                   {selectedTier.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start space-x-2.5 text-sm text-slate-200">
-                      <Check className="w-4 h-4 text-thunder-cyan mt-0.5 flex-shrink-0" />
+                      <HugeiconsIcon icon={Checkmark} className="w-4 h-4 text-thunder-cyan mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -883,7 +884,7 @@ export default function TicketsPage() {
               {/* Guidelines & Terms */}
               <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0a0c]/40 space-y-4">
                 <h4 className="text-sm font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
-                  <Shield className="w-4.5 h-4.5 text-thunder-blue mr-1.5" />
+                  <HugeiconsIcon icon={Shield01Icon} className="w-4.5 h-4.5 text-thunder-blue mr-1.5" />
                   Important Guidelines
                 </h4>
                 <ul className="space-y-3">
@@ -893,7 +894,7 @@ export default function TicketsPage() {
                   </li>
                   {selectedTierId === "student" && (
                     <li className="flex items-start space-x-2.5 text-sm text-amber-400 border border-amber-500/25 bg-amber-500/5 p-3 rounded-lg">
-                      <AlertCircle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                      <HugeiconsIcon icon={AlertCircleIcon} className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
                       <span>
                         <strong>Student Verification:</strong> Student Pass holders must carry a valid physical student college ID card. If not found or invalid at the check-in desk, you will have to upgrade to a Standard Pass by paying the ticket price difference.
                       </span>
@@ -938,7 +939,7 @@ export default function TicketsPage() {
             {/* Header success message */}
             <div className="glass-panel rounded-2xl p-6 md:p-8 text-center space-y-4 border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
               <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(16,185,129,0.2)] animate-bounce">
-                <Sparkles className="w-7 h-7" />
+                <HugeiconsIcon icon={SparklesIcon} className="w-7 h-7" />
               </div>
               <div className="space-y-1.5">
                 <h2 className="text-2xl font-extrabold text-white">Payment Verified Successfully!</h2>
@@ -957,7 +958,7 @@ export default function TicketsPage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-mono tracking-wider text-slate-200 uppercase flex items-center">
-                  <Terminal className="w-4 h-4 text-thunder-blue mr-2" />
+                  <HugeiconsIcon icon={TerminalIcon} className="w-4 h-4 text-thunder-blue mr-2" />
                   Your Cryptographic Entry Ticket
                 </h3>
                 <span className="text-xs font-mono text-slate-300 uppercase">
@@ -981,7 +982,7 @@ export default function TicketsPage() {
                   onClick={handleDownloadTicket}
                   className="flex-1 py-4 rounded-xl bg-thunder-cyan hover:bg-thunder-cyan-dark text-black font-bold font-mono tracking-widest text-sm uppercase flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all cursor-pointer border border-thunder-cyan/40"
                 >
-                  <Download className="w-4.5 h-4.5" />
+                  <HugeiconsIcon icon={DownloadIcon} className="w-4.5 h-4.5" />
                   <span>Download E-Ticket (PNG)</span>
                 </button>
                 <button
@@ -996,7 +997,7 @@ export default function TicketsPage() {
             {/* Local Storage Info Alert */}
             <div className="p-4 rounded-xl border border-white/5 bg-[#0a0a0c]/60 space-y-2 text-sm text-slate-300">
               <span className="font-bold text-slate-100 flex items-center">
-                <Shield className="w-4 h-4 text-thunder-blue mr-1.5" />
+                <HugeiconsIcon icon={Shield01Icon} className="w-4 h-4 text-thunder-blue mr-1.5" />
                 Data Storage Core Information
               </span>
               <p className="leading-relaxed font-sans text-slate-200">

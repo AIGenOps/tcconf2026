@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, FileCheck, Terminal, HelpCircle, User, Mail, Link as LinkIcon, Briefcase } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { SentIcon, FileCheckIcon, HelpCircleIcon, UserIcon, MailIcon, Link01Icon, Briefcase01Icon } from "@hugeicons/core-free-icons";
 import CyberCaptcha from "../ui/CyberCaptcha";
 import confetti from "canvas-confetti";
 
@@ -128,14 +129,14 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
               {/* Status Alerts */}
               {status === "success" && (
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center space-x-2 font-mono">
-                  <FileCheck className="w-4.5 h-4.5" />
+                  <HugeiconsIcon icon={FileCheckIcon} className="w-4.5 h-4.5" />
                   <span>Success: Form successfully submitted.</span>
                 </div>
               )}
 
               {status === "error" && (
                 <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center space-x-2 font-mono">
-                  <HelpCircle className="w-4.5 h-4.5" />
+                  <HugeiconsIcon icon={HelpCircleIcon} className="w-4.5 h-4.5" />
                   <span>Error: {errorMessage}</span>
                 </div>
               )}
@@ -144,7 +145,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
-                    <User className="w-4 h-4 mr-1.5 text-thunder-blue" /> Full Name
+                    <HugeiconsIcon icon={UserIcon} className="w-4 h-4 mr-1.5 text-thunder-blue" /> Full Name
                   </label>
                   <input
                     type="text"
@@ -158,7 +159,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
 
                 <div className="space-y-2">
                   <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
-                    <Mail className="w-4 h-4 mr-1.5 text-thunder-blue" /> Email Address
+                    <HugeiconsIcon icon={MailIcon} className="w-4 h-4 mr-1.5 text-thunder-blue" /> Email Address
                   </label>
                   <input
                     type="email"
@@ -176,7 +177,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fadeIn">
                   <div className="space-y-2">
                     <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
-                      <LinkIcon className="w-4 h-4 mr-1.5 text-thunder-blue" /> GitHub Profile
+                      <HugeiconsIcon icon={Link01Icon} className="w-4 h-4 mr-1.5 text-thunder-blue" /> GitHub Profile
                     </label>
                     <input
                       type="url"
@@ -190,7 +191,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
 
                   <div className="space-y-2">
                     <label className="text-xs font-mono uppercase tracking-wider text-slate-200 flex items-center font-bold">
-                      <Briefcase className="w-4 h-4 mr-1.5 text-thunder-blue" /> Primary Skills
+                      <HugeiconsIcon icon={Briefcase01Icon} className="w-4 h-4 mr-1.5 text-thunder-blue" /> Primary Skills
                     </label>
                     <input
                       type="text"
@@ -237,7 +238,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
                 ) : (
                   <>
                     <span>Submit Request</span>
-                    <Send className="w-4 h-4" />
+                    <HugeiconsIcon icon={SentIcon} className="w-4 h-4" />
                   </>
                 )}
               </button>

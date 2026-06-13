@@ -2,7 +2,8 @@
 
 import React, { useRef, useState, MouseEvent } from "react";
 import { motion } from "framer-motion";
-import { Terminal, Users, Cpu, Trophy, BookOpen, Rocket } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { UserGroupIcon, BookOpen01Icon, CpuIcon, Trophy, RocketIcon, TerminalIcon } from "@hugeicons/core-free-icons";
 
 interface CardItem {
   icon: React.ReactNode;
@@ -73,32 +74,32 @@ function GlowCard({ icon, title, description }: CardItem) {
 export default function WhyAttend() {
   const cards: CardItem[] = [
     {
-      icon: <Users className="w-5 h-5" />,
+      icon: <HugeiconsIcon icon={UserGroupIcon} className="w-5 h-5" />,
       title: "Premium Networking",
       description: "Connect with 400+ researchers, developers, developers, and security professionals. Share ideas, form teams, and expand your professional cyber-defense network.",
     },
     {
-      icon: <BookOpen className="w-5 h-5" />,
+      icon: <HugeiconsIcon icon={BookOpen01Icon} className="w-5 h-5" />,
       title: "Interactive Learning",
       description: "Dive deep into modern attack methodologies, defensive countermeasures, cloud architecture security, and IoT firmware analysis led by experienced industry speakers.",
     },
     {
-      icon: <Cpu className="w-5 h-5" />,
+      icon: <HugeiconsIcon icon={CpuIcon} className="w-5 h-5" />,
       title: "Hands-on Workshops",
       description: "Gain practical experience in sandboxed environments. Take part in guided defense setups, code audits, container security configuration, and live red-teaming scenarios.",
     },
     {
-      icon: <Trophy className="w-5 h-5" />,
+      icon: <HugeiconsIcon icon={Trophy} className="w-5 h-5" />,
       title: "Dedicated CTF Challenge",
       description: "Test your skills in our themed Capture The Flag event. Solve reverse engineering, web exploitation, binary analysis, and cryptography challenges to win premium prizes.",
     },
     {
-      icon: <Rocket className="w-5 h-5" />,
+      icon: <HugeiconsIcon icon={RocketIcon} className="w-5 h-5" />,
       title: "Interactive Villages",
       description: "Explore diverse specialized villages: lockpicking, hardware hacking, social engineering, and cloud security labs. Get hands-on with real devices and chipsets.",
     },
     {
-      icon: <Terminal className="w-5 h-5" />,
+      icon: <HugeiconsIcon icon={TerminalIcon} className="w-5 h-5" />,
       title: "Career & Growth",
       description: "Meet sponsoring enterprises, recruitment boards, and security firms looking for skilled developers. Pitch projects and discover new industry positions.",
     },

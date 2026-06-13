@@ -2,7 +2,8 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ShieldAlert, ShieldCheck, ArrowRight } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ShieldAlert, ShieldCheck, ArrowRight01Icon } from "@hugeicons/core-free-icons";
 
 interface CyberCaptchaProps {
   onVerify: (verified: boolean, token: string) => void;
@@ -78,11 +79,11 @@ export default function CyberCaptcha({ onVerify }: CyberCaptchaProps) {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none text-xs font-mono tracking-widest font-bold">
           {verified ? (
             <span className="text-emerald-400 flex items-center">
-              <ShieldCheck className="w-4.5 h-4.5 mr-1 animate-pulse" /> Verification Successful
+              <HugeiconsIcon icon={ShieldCheck} className="w-4.5 h-4.5 mr-1 animate-pulse" /> Verification Successful
             </span>
           ) : (
             <span className="text-slate-200 flex items-center font-sans">
-              Slide to unlock <ArrowRight className="w-4 h-4 ml-1.5 animate-pulse text-thunder-cyan" />
+              Slide to unlock <HugeiconsIcon icon={ArrowRight01Icon} className="w-4 h-4 ml-1.5 animate-pulse text-thunder-cyan" />
             </span>
           )}
         </div>
@@ -98,11 +99,11 @@ export default function CyberCaptcha({ onVerify }: CyberCaptchaProps) {
             style={{ x }}
             className="w-10 h-8 rounded-lg bg-thunder-blue hover:bg-thunder-cyan text-white flex items-center justify-center cursor-grab active:cursor-grabbing shadow-glow-blue z-10 transition-colors"
           >
-            <ShieldAlert className="w-4 h-4" />
+            <HugeiconsIcon icon={ShieldAlert} className="w-4 h-4" />
           </motion.div>
         ) : (
           <div className="w-10 h-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center ml-auto shadow-[0_0_15px_rgba(16,185,129,0.4)]">
-            <ShieldCheck className="w-4.5 h-4.5" />
+            <HugeiconsIcon icon={ShieldCheck} className="w-4.5 h-4.5" />
           </div>
         )}
       </motion.div>

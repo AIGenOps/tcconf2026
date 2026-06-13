@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, FileText, Award, ExternalLink } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft02Icon, FileCodeIcon, Award01Icon, ExternalLinkIcon } from "@hugeicons/core-free-icons";
 
 export default function SponsorPage() {
   return (
@@ -17,7 +18,7 @@ export default function SponsorPage() {
             href="/"
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>
           </Link>
         </div>
@@ -43,7 +44,7 @@ export default function SponsorPage() {
         <div className="glass-panel border border-white/5 rounded-2xl bg-[#070913]/30 p-8 md:p-12 backdrop-blur-sm shadow-sm relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-4 max-w-xl">
             <div className="inline-flex items-center justify-center p-3 rounded-xl bg-thunder-blue/10 border border-thunder-blue/20 text-thunder-cyan mb-2">
-              <Award className="w-6 h-6" />
+              <HugeiconsIcon icon={Award01Icon} className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-white tracking-tight">
               Sponsorship Inquiry Form
@@ -60,9 +61,9 @@ export default function SponsorPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center space-x-2 px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase bg-thunder-blue text-white shadow-glow-blue hover:bg-thunder-blue/90 transition-all duration-300 transform hover:-translate-y-0.5 border border-thunder-blue/50 whitespace-nowrap"
             >
-              <FileText className="w-4 h-4" />
+              <HugeiconsIcon icon={FileCodeIcon} className="w-4 h-4" />
               <span>Sponsor Us</span>
-              <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
+              <HugeiconsIcon icon={ExternalLinkIcon} className="w-3.5 h-3.5 ml-1 opacity-70" />
             </a>
           </div>
         </div>

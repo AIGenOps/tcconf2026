@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Menu01Icon, Cancel01Icon, ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 const navLinks = [
   { name: "Speakers", href: "/speakers" },
@@ -94,7 +95,7 @@ export default function Navbar() {
               className="hidden xl:inline-flex items-center space-x-1 px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase border border-thunder-blue/40 bg-thunder-blue/10 hover:bg-thunder-blue hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(0,82,255,0.2)] hover:shadow-[0_0_25px_rgba(0,82,255,0.4)]"
             >
               <span>Tickets</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <HugeiconsIcon icon={ArrowUpRight01Icon} className="w-3.5 h-3.5" />
             </Link>
 
             {/* Mobile Menu Icon (Three Lines) */}
@@ -103,7 +104,7 @@ export default function Navbar() {
               className="p-2 rounded-full border border-white/10 hover:bg-white/5 xl:hidden text-slate-300 hover:text-white transition-all"
               aria-label="Toggle Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" strokeWidth={2.5} /> : <Menu className="w-6 h-6" strokeWidth={2.5} />}
+              {mobileMenuOpen ? <HugeiconsIcon icon={Cancel01Icon} className="w-6 h-6" /> : <HugeiconsIcon icon={Menu01Icon} className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -147,7 +148,7 @@ export default function Navbar() {
                   className="w-full justify-center inline-flex items-center space-x-2 px-6 py-4 rounded-full text-sm font-bold tracking-wider uppercase bg-thunder-blue text-white shadow-glow-blue"
                 >
                   <span>Register & Buy Ticket</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <HugeiconsIcon icon={ArrowUpRight01Icon} className="w-4 h-4" />
                 </Link>
               </motion.div>
             </div>

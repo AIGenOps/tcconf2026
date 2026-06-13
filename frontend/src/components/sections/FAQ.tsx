@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Add01Icon, Remove01Icon, HelpCircleIcon } from "@hugeicons/core-free-icons";
 import { getFAQs } from "@/lib/sanity";
 
 interface FAQItem {
@@ -45,11 +46,11 @@ function FAQAccordion({ question, answer, isOpen, onToggle }: FAQItem & { isOpen
         className="w-full flex items-center justify-between text-left py-2 text-sm sm:text-base font-semibold text-slate-200 hover:text-white transition-colors group focus:outline-none"
       >
         <span className="flex items-center space-x-3">
-          <HelpCircle className="w-4.5 h-4.5 text-thunder-cyan group-hover:scale-110 transition-transform duration-300" />
+          <HugeiconsIcon icon={HelpCircleIcon} className="w-4.5 h-4.5 text-thunder-cyan group-hover:scale-110 transition-transform duration-300" />
           <span>{question}</span>
         </span>
         <span className="p-1.5 rounded-full border border-white/5 bg-white/2 text-slate-200 group-hover:text-white transition-all duration-300">
-          {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+          {isOpen ? <HugeiconsIcon icon={Remove01Icon} className="w-3.5 h-3.5" /> : <HugeiconsIcon icon={Add01Icon} className="w-3.5 h-3.5" />}
         </span>
       </button>
 

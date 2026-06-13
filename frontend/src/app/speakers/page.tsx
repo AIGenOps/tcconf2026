@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { getSpeakers, Speaker } from "@/lib/sanity";
-import { ArrowLeft, UserCheck, Shield, Award } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft02Icon, Award01Icon, Shield01Icon, UserGroupIcon } from "@hugeicons/core-free-icons";
 
 const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -41,7 +42,7 @@ export default async function SpeakersPage() {
             href="/"
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
-            <ArrowLeft className="w-4.5 h-4.5" />
+            <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4.5 h-4.5" />
             <span>RETURN_TO_HOME</span>
           </Link>
           <div className="space-y-2">
@@ -59,7 +60,7 @@ export default async function SpeakersPage() {
         {keynotes.length > 0 && (
           <div className="space-y-8">
             <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
-              <Award className="w-4.5 h-4.5 text-yellow-400" />
+              <HugeiconsIcon icon={Award01Icon} className="w-4.5 h-4.5 text-yellow-400" />
               <span>CATEGORY_STREAM: KEYNOTE_SPEAKERS</span>
             </div>
 
@@ -129,7 +130,7 @@ export default async function SpeakersPage() {
         {panelists.length > 0 && (
           <div className="space-y-8">
             <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
-              <Shield className="w-4.5 h-4.5 text-thunder-cyan animate-pulse" />
+              <HugeiconsIcon icon={Shield01Icon} className="w-4.5 h-4.5 text-thunder-cyan animate-pulse" />
               <span>CATEGORY_STREAM: CXO_PANELISTS</span>
             </div>
 
@@ -191,7 +192,7 @@ export default async function SpeakersPage() {
         {showcase.length > 0 && (
           <div className="space-y-8">
             <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
-              <UserCheck className="w-4 h-4 text-thunder-blue" />
+              <HugeiconsIcon icon={UserGroupIcon} className="w-4 h-4 text-thunder-blue" />
               <span>CATEGORY_STREAM: TECHNICAL_SHOWCASE</span>
             </div>
 

@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { MapPin, Train, Plane, Navigation, Globe } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Location01Icon, Train01Icon, Airplane01Icon, Navigation01Icon } from "@hugeicons/core-free-icons";
 
 export default function Venue() {
   return (
@@ -34,7 +35,7 @@ export default function Venue() {
             {/* Address Card */}
             <div className="flex items-start space-x-4 p-5 rounded-xl bg-white/2 border border-white/5 backdrop-blur-sm">
               <div className="p-3 rounded-lg bg-thunder-blue/10 border border-thunder-blue/30 text-thunder-cyan">
-                <MapPin className="w-5 h-5" />
+                <HugeiconsIcon icon={Location01Icon} className="w-5 h-5" />
               </div>
               <div className="space-y-1">
                 <span className="text-xs font-mono text-slate-300 uppercase tracking-wider font-bold">ADDRESS</span>
@@ -57,7 +58,7 @@ export default function Venue() {
               <div className="space-y-3">
                 {/* Metro */}
                 <div className="flex items-start space-x-3 text-xs">
-                  <Train className="w-4 h-4 text-thunder-cyan mt-0.5" />
+                  <HugeiconsIcon icon={Train01Icon} className="w-4 h-4 text-thunder-cyan mt-0.5" />
                   <div className="space-y-0.5">
                     <span className="font-semibold text-slate-200">Nearest Metro Station</span>
                     <p className="text-slate-200">Knowledge Park II Metro Station (Aqua Line) — 1.5 km away.</p>
@@ -66,7 +67,7 @@ export default function Venue() {
 
                 {/* Airport */}
                 <div className="flex items-start space-x-3 text-xs">
-                  <Plane className="w-4 h-4 text-thunder-cyan mt-0.5" />
+                  <HugeiconsIcon icon={Airplane01Icon} className="w-4 h-4 text-thunder-cyan mt-0.5" />
                   <div className="space-y-0.5">
                     <span className="font-semibold text-slate-200">From Airports</span>
                     <p className="text-slate-200">Indira Gandhi International Airport (DEL) — approx 50 km (60 mins drive via DND Flyway).</p>
@@ -83,7 +84,7 @@ export default function Venue() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 px-6 py-3 rounded-full text-xs font-bold tracking-widest uppercase bg-white/5 border border-white/10 hover:border-thunder-blue hover:bg-thunder-blue/10 text-slate-200 hover:text-white transition-all duration-300"
               >
-                <Navigation className="w-4 h-4" />
+                <HugeiconsIcon icon={Navigation01Icon} className="w-4 h-4" />
                 <span>Navigate on Google Maps</span>
               </a>
             </div>

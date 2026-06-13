@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Cpu, Cloud, Terminal, KeyRound, ArrowRight } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CpuIcon, CloudIcon, TerminalIcon, Key01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
 
 interface VillageItem {
   id: string;
@@ -15,7 +16,7 @@ interface VillageItem {
 const mockVillages: VillageItem[] = [
   {
     id: "hardware",
-    icon: <Cpu className="w-6 h-6 text-emerald-400" />,
+    icon: <HugeiconsIcon icon={CpuIcon} className="w-6 h-6 text-emerald-400" />,
     title: "Hardware Hacking & Lockpicking",
     description: "Learn firmware extraction, JTAG debugging, and side-channel analysis. Get hands-on with locks, lockpicks, and hardware bypass boards.",
     labs: ["JTAG Firmware Dumps", "UART Terminal Shells", "Pin Tumbler Locks", "Bypass Toolkits"],
@@ -23,7 +24,7 @@ const mockVillages: VillageItem[] = [
   },
   {
     id: "cloud",
-    icon: <Cloud className="w-6 h-6 text-sky-400" />,
+    icon: <HugeiconsIcon icon={CloudIcon} className="w-6 h-6 text-sky-400" />,
     title: "Cloud & Kubernetes Security",
     description: "Explore misconfigured Kubernetes clusters, container escape tactics, AWS IAM privilege escalation, and modern CI/CD hijacking loops.",
     labs: ["Kubernetes ESCAPE-9", "IAM Privilege Escalation", "Docker Socket Hijack", "GitHub Actions Attacks"],
@@ -31,7 +32,7 @@ const mockVillages: VillageItem[] = [
   },
   {
     id: "redteam",
-    icon: <Terminal className="w-6 h-6 text-red-400" />,
+    icon: <HugeiconsIcon icon={TerminalIcon} className="w-6 h-6 text-red-400" />,
     title: "Red Teaming & Active Directory",
     description: "Attack domain controllers, bypass Endpoint Detection and Response (EDR) agents, perform ticket harvesting, and simulate malware droppers.",
     labs: ["Kerberoasting Attacks", "EDR Bypass Techniques", "Token Manipulation", "LSA Secrets Extraction"],
@@ -39,7 +40,7 @@ const mockVillages: VillageItem[] = [
   },
   {
     id: "cryptography",
-    icon: <KeyRound className="w-6 h-6 text-purple-400" />,
+    icon: <HugeiconsIcon icon={Key01Icon} className="w-6 h-6 text-purple-400" />,
     title: "Web3 & Smart Contract Audit",
     description: "Audit Ethereum/Solidity contracts, exploit reentrancy bugs, audit flash loan vulnerabilities, and bypass multi-signature validation models.",
     labs: ["Reentrancy Attacks", "Flash Loan Exploits", "Sign Bypass Audits", "Oracle Manipulation"],
@@ -116,7 +117,7 @@ export default function Villages() {
             <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-sm text-slate-300">
               <span>Village Code: {village.id.toUpperCase()}</span>
               <span className="flex items-center text-thunder-blue group-hover:text-white transition-colors duration-300 cursor-pointer font-semibold">
-                Learn More <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                Learn More <HugeiconsIcon icon={ArrowRight01Icon} className="w-3.5 h-3.5 ml-1" />
               </span>
             </div>
           </div>

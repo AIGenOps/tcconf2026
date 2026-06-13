@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, Clock, Printer, Globe, Calendar, Terminal } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft02Icon, GlobeIcon, PrinterIcon, TerminalIcon, Clock01Icon } from "@hugeicons/core-free-icons";
 import { ScheduleItem } from "@/lib/sanity";
 
 interface ScheduleClientProps {
@@ -106,7 +107,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
               href="/"
               className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
             >
-              <ArrowLeft className="w-4.5 h-4.5" />
+              <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4.5 h-4.5" />
               <span>Back to Home</span>
             </Link>
             <div className="space-y-2">
@@ -126,7 +127,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
               onClick={() => setTimezone(timezone === "IST" ? "LOCAL" : "IST")}
               className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-white/5 bg-white/2 hover:bg-white/5 text-slate-300 hover:text-white transition-all duration-300"
             >
-              <Globe className="w-4 h-4 text-thunder-cyan" />
+              <HugeiconsIcon icon={GlobeIcon} className="w-4 h-4 text-thunder-cyan" />
               <span>
                 <span className="hidden xs:inline">Timezone: </span>
                 {timezone === "IST" ? (
@@ -148,7 +149,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
               onClick={handlePrint}
               className="flex items-center space-x-1.5 px-4 py-2.5 rounded-xl border border-white/5 bg-white/2 hover:bg-white/5 text-slate-300 hover:text-white transition-all duration-300"
             >
-              <Printer className="w-4 h-4 text-thunder-blue" />
+              <HugeiconsIcon icon={PrinterIcon} className="w-4 h-4 text-thunder-blue" />
               <span>Download PDF</span>
             </button>
           </div>
@@ -157,7 +158,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
         {/* Live Simulator Panel */}
         <div className="p-4 rounded-2xl border border-white/5 bg-[#0a0a0c]/60 backdrop-blur-md flex flex-wrap items-center justify-between gap-4 text-xs font-mono print:hidden">
           <div className="flex items-center space-x-3">
-            <Terminal className="w-4 h-4 text-thunder-cyan" />
+            <HugeiconsIcon icon={TerminalIcon} className="w-4 h-4 text-thunder-cyan" />
             <span className="text-slate-300">Simulate Live Tracking:</span>
             <button
               onClick={() => setSimulateLive(!simulateLive)}
@@ -243,7 +244,7 @@ export default function ScheduleClient({ initialDay1Schedule, initialDay2Schedul
                     
                     {/* Time readout */}
                     <div className="flex items-center space-x-1.5 text-xs font-mono text-slate-200 print:text-black">
-                      <Clock className="w-3.5 h-3.5 text-thunder-cyan print:text-black" />
+                      <HugeiconsIcon icon={Clock01Icon} className="w-3.5 h-3.5 text-thunder-cyan print:text-black" />
                       <span className="font-semibold">{formatTime(item.time)}</span>
                     </div>
 

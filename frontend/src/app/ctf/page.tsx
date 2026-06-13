@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ShieldAlert, Award, Play, Trophy, Terminal, BookOpen } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft02Icon, AlertCircleIcon, Award01Icon, PlayIcon, Trophy, TerminalIcon, BookOpen01Icon } from "@hugeicons/core-free-icons";
 
 interface TimeLeft {
   hours: number;
@@ -61,7 +62,7 @@ export default function CTFPage() {
             href="/"
             className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
-            <ArrowLeft className="w-4.5 h-4.5" />
+            <HugeiconsIcon icon={ArrowLeft02Icon} className="w-4.5 h-4.5" />
             <span>RETURN_TO_HOME</span>
           </Link>
           
@@ -76,7 +77,7 @@ export default function CTFPage() {
             </div>
 
             <div className="flex items-center space-x-2 text-xs font-semibold text-yellow-400 bg-yellow-400/5 px-4 py-2 rounded-xl border border-yellow-400/20 max-w-max">
-              <ShieldAlert className="w-4.5 h-4.5 text-yellow-400 animate-pulse" />
+              <HugeiconsIcon icon={AlertCircleIcon} className="w-4.5 h-4.5 text-yellow-400 animate-pulse" />
               <span>Registration Open</span>
             </div>
           </div>
@@ -112,7 +113,7 @@ export default function CTFPage() {
         {/* Prize Pool Panel */}
         <div className="space-y-6">
           <div className="flex items-center space-x-2 text-xs font-semibold text-slate-300 tracking-wider pb-2 border-b border-white/5">
-            <Trophy className="w-4.5 h-4.5 text-yellow-400" />
+            <HugeiconsIcon icon={Trophy} className="w-4.5 h-4.5 text-yellow-400" />
             <span>Prize Pool Rewards</span>
           </div>
 
@@ -127,7 +128,7 @@ export default function CTFPage() {
                 </p>
               </div>
               <div className="mt-4 flex items-center text-xs font-mono text-yellow-400 font-bold">
-                <Award className="w-4 h-4 mr-1.5" /> 1st Place Reward
+                <HugeiconsIcon icon={Award01Icon} className="w-4 h-4 mr-1.5" /> 1st Place Reward
               </div>
             </div>
 
@@ -141,7 +142,7 @@ export default function CTFPage() {
                 </p>
               </div>
               <div className="mt-4 flex items-center text-xs font-mono text-slate-300 font-bold">
-                <Award className="w-4 h-4 mr-1.5" /> 2nd Place Reward
+                <HugeiconsIcon icon={Award01Icon} className="w-4 h-4 mr-1.5" /> 2nd Place Reward
               </div>
             </div>
 
@@ -155,7 +156,7 @@ export default function CTFPage() {
                 </p>
               </div>
               <div className="mt-4 flex items-center text-xs font-mono text-amber-500 font-bold">
-                <Award className="w-4 h-4 mr-1.5" /> 3rd Place Reward
+                <HugeiconsIcon icon={Award01Icon} className="w-4 h-4 mr-1.5" /> 3rd Place Reward
               </div>
             </div>
           </div>
@@ -164,7 +165,7 @@ export default function CTFPage() {
         {/* Categories Section */}
         <div className="space-y-6">
           <div className="flex items-center space-x-2 text-xs font-semibold text-slate-300 tracking-wider pb-2 border-b border-white/5">
-            <Terminal className="w-4 h-4 text-thunder-cyan" />
+            <HugeiconsIcon icon={TerminalIcon} className="w-4 h-4 text-thunder-cyan" />
             <span>Challenge Categories</span>
           </div>
 
@@ -189,7 +190,7 @@ export default function CTFPage() {
         {/* CTF Rules */}
         <div className="space-y-6">
           <div className="flex items-center space-x-2 text-xs font-semibold text-slate-300 tracking-wider pb-2 border-b border-white/5">
-            <BookOpen className="w-4.5 h-4.5 text-thunder-blue" />
+            <HugeiconsIcon icon={BookOpen01Icon} className="w-4.5 h-4.5 text-thunder-blue" />
             <span>Rules & Regulations</span>
           </div>
 

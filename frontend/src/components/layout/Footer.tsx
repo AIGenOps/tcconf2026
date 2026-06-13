@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Terminal, ShieldAlert, Cpu, Heart } from "lucide-react";
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
