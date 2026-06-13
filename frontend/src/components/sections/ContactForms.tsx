@@ -121,7 +121,7 @@ export default function ContactForms({ forceTab }: ContactFormsProps = {}) {
               className="space-y-6 font-sans"
             >
               {/* Form Title banner */}
-              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-450 pb-4 border-b border-white/5">
+              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-200 pb-4 border-b border-white/5">
                 <span>Please provide your details below to submit your transmission.</span>
               </div>
 

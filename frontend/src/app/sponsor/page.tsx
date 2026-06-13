@@ -15,7 +15,7 @@ export default function SponsorPage() {
         <div>
           <Link
             href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
+            className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>
@@ -34,7 +34,7 @@ export default function SponsorPage() {
             <div className="w-16 h-1 bg-thunder-blue rounded-full mt-4" />
           </div>
 
-          <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-3xl">
+          <p className="text-slate-200 text-sm md:text-base leading-relaxed max-w-3xl">
             ThunderCipher is the premier cybersecurity conference in the region, bringing together top security researchers, industry professionals, developers, and defense experts. Partnering with us offers a unique opportunity to showcase your brand, recruit elite cybersecurity talent, and support the open security community.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function SponsorPage() {
             <h3 className="text-xl font-bold text-white tracking-tight">
               Sponsorship Inquiry Form
             </h3>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+            <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
               Sponsorship packages are available across multiple tiers (Bronze, Silver, Gold, Platinum, and Title). To receive our comprehensive sponsorship prospectus or discuss custom branding opportunities, please submit our sponsorship form.
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function SponsorPage() {
             <div className="text-thunder-cyan font-bold text-sm tracking-widest font-mono uppercase">
               Brand Visibility
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Showcase your security products, tools, and platforms directly to a highly targeted audience of developers, operators, and cyber professionals.
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function SponsorPage() {
             <div className="text-thunder-cyan font-bold text-sm tracking-widest font-mono uppercase">
               Talent Acquisition
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Connect with leading security candidates, CTF players, and researchers during the hiring village and recruitment networking tracks.
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function SponsorPage() {
             <div className="text-thunder-cyan font-bold text-sm tracking-widest font-mono uppercase">
               Community Support
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Support the next generation of cybersecurity defenders by enabling hacking villages, lockpicking labs, and regional security training.
             </p>
           </div>

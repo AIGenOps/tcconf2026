@@ -59,7 +59,7 @@ export default function CTFPage() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
+            className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
             <ArrowLeft className="w-4.5 h-4.5" />
             <span>RETURN_TO_HOME</span>
@@ -70,7 +70,7 @@ export default function CTFPage() {
               <h1 className="text-4xl font-extrabold text-white tracking-tight">
                 Capture The Flag <span className="text-thunder-cyan">(CTF)</span>
               </h1>
-              <p className="text-slate-400 text-sm max-w-lg">
+              <p className="text-slate-200 text-sm max-w-lg font-medium">
                 Enter the sandbox. Test your offensive cybersecurity skills in our annual jeopardy-style hacking challenge. Solve technical tasks, claim flags, and top the leaderboard.
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function CTFPage() {
         {/* Countdown to CTF Start */}
         {isMounted && (
           <div className="p-8 rounded-2xl border border-white/5 bg-[#0a0a0c]/60 backdrop-blur-md max-w-xl mx-auto text-center space-y-4 shadow-glow-cyan">
-            <span className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
+            <span className="text-xs font-bold tracking-wider text-slate-200 uppercase">
               Countdown to Hacking Start
             </span>
             <div className="flex justify-center space-x-4">
@@ -99,11 +99,11 @@ export default function CTFPage() {
                   <span className="font-mono text-3xl md:text-4xl font-black text-white tracking-widest leading-none drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">
                     {String(t.value).padStart(2, "0")}
                   </span>
-                  <span className="text-[9px] font-mono text-slate-500 mt-2 tracking-wider">{t.label}</span>
+                  <span className="text-xs font-mono text-slate-300 mt-2 tracking-wider">{t.label}</span>
                 </div>
               ))}
             </div>
-            <p className="text-[11px] text-slate-400 font-mono">
+            <p className="text-xs text-slate-200 font-mono font-medium">
               Event begins on Day 2 of the summit (Oct 4, 2026) at 09:30 AM IST.
             </p>
           </div>
@@ -120,13 +120,13 @@ export default function CTFPage() {
             {/* 1st */}
             <div className="group relative rounded-2xl border border-yellow-400/20 bg-yellow-400/5 p-6 backdrop-blur-sm flex flex-col justify-between min-h-[180px]">
               <div className="space-y-3">
-                <span className="text-xs font-semibold tracking-wider text-yellow-400">1st Place</span>
+                <span className="text-xs font-bold tracking-wider text-yellow-400">1st Place</span>
                 <h3 className="text-2xl font-bold text-white">INR 30,000</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">
+                <p className="text-slate-200 text-sm leading-relaxed">
                   Includes Premium Hardware bypass kit, Certified Winner badge, and corporate interview skips.
                 </p>
               </div>
-              <div className="mt-4 flex items-center text-[10px] font-mono text-yellow-400">
+              <div className="mt-4 flex items-center text-xs font-mono text-yellow-400 font-bold">
                 <Award className="w-4 h-4 mr-1.5" /> 1st Place Reward
               </div>
             </div>
@@ -134,13 +134,13 @@ export default function CTFPage() {
             {/* 2nd */}
             <div className="group relative rounded-2xl border border-slate-400/20 bg-slate-400/5 p-6 backdrop-blur-sm flex flex-col justify-between min-h-[180px]">
               <div className="space-y-3">
-                <span className="text-xs font-semibold tracking-wider text-slate-300">2nd Place</span>
+                <span className="text-xs font-bold tracking-wider text-slate-350">2nd Place</span>
                 <h3 className="text-2xl font-bold text-white">INR 15,000</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">
+                <p className="text-slate-200 text-sm leading-relaxed">
                   Includes Advanced lockpicking toolkit, runner-up credentials, and partner merchandise bags.
                 </p>
               </div>
-              <div className="mt-4 flex items-center text-[10px] font-mono text-slate-300">
+              <div className="mt-4 flex items-center text-xs font-mono text-slate-300 font-bold">
                 <Award className="w-4 h-4 mr-1.5" /> 2nd Place Reward
               </div>
             </div>
@@ -148,13 +148,13 @@ export default function CTFPage() {
             {/* 3rd */}
             <div className="group relative rounded-2xl border border-amber-600/20 bg-amber-600/5 p-6 backdrop-blur-sm flex flex-col justify-between min-h-[180px]">
               <div className="space-y-3">
-                <span className="text-xs font-semibold tracking-wider text-amber-600">3rd Place</span>
+                <span className="text-xs font-bold tracking-wider text-amber-500">3rd Place</span>
                 <h3 className="text-2xl font-bold text-white">INR 10,000</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">
+                <p className="text-slate-200 text-sm leading-relaxed">
                   Includes pocket lockpicking set, physical certificates, and event sponsor vouchers.
                 </p>
               </div>
-              <div className="mt-4 flex items-center text-[10px] font-mono text-amber-600">
+              <div className="mt-4 flex items-center text-xs font-mono text-amber-500 font-bold">
                 <Award className="w-4 h-4 mr-1.5" /> 3rd Place Reward
               </div>
             </div>
@@ -176,9 +176,9 @@ export default function CTFPage() {
               >
                 <div className="space-y-1.5">
                   <h4 className="text-sm font-bold text-slate-200">{c.name}</h4>
-                  <p className="text-slate-400 text-xs leading-relaxed max-w-sm">{c.desc}</p>
+                  <p className="text-slate-200 text-sm leading-relaxed max-w-sm">{c.desc}</p>
                 </div>
-                <span className="text-[10px] font-mono text-thunder-cyan border border-white/5 bg-white/2 px-2.5 py-1 rounded-full whitespace-nowrap">
+                <span className="text-xs font-mono font-bold text-thunder-cyan border border-white/5 bg-white/2 px-2.5 py-1 rounded-full whitespace-nowrap">
                   {c.count} TASKS
                 </span>
               </div>
@@ -193,14 +193,14 @@ export default function CTFPage() {
             <span>Rules & Regulations</span>
           </div>
 
-          <div className="p-6 rounded-2xl border border-white/5 bg-[#070913]/30 backdrop-blur-sm text-xs font-mono text-slate-400 space-y-4">
+          <div className="p-6 rounded-2xl border border-white/5 bg-[#070913]/30 backdrop-blur-sm text-sm font-mono text-slate-200 space-y-4">
             <div className="flex items-start space-x-2.5">
               <span className="text-thunder-cyan font-bold">[1]</span>
               <p>Teams can consist of 1 to 4 members. All registrations must be completed prior to start time.</p>
             </div>
             <div className="flex items-start space-x-2.5">
               <span className="text-thunder-cyan font-bold">[2]</span>
-              <p>Flags are formatted as <code className="text-thunder-cyan">tcconf2026&#123;string&#125;</code>. Pay close attention to spelling and offsets.</p>
+              <p>Flags are formatted as <code className="text-thunder-cyan font-bold">tcconf2026&#123;string&#125;</code>. Pay close attention to spelling and offsets.</p>
             </div>
             <div className="flex items-start space-x-2.5">
               <span className="text-thunder-cyan font-bold">[3]</span>

@@ -20,7 +20,7 @@ export default function Footer() {
               THUNDER<span className="text-thunder-cyan group-hover:text-thunder-cyan/85">CIPHER</span>
             </span>
           </a>
-          <p className="text-slate-400 text-xs leading-relaxed">
+          <p className="text-slate-200 text-sm leading-relaxed">
             Your gateway to mastering offensive security. Access real-world labs, track your progress, and elevate your cybersecurity journey.
           </p>
         </div>
@@ -28,24 +28,24 @@ export default function Footer() {
         {/* Navigation Column */}
         <div className="space-y-3">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-300">EXPLORE</h4>
-          <ul className="space-y-2 text-xs font-medium">
+          <ul className="space-y-2 text-sm font-medium">
             <li>
-              <Link href="/speakers" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/speakers" className="text-slate-250 hover:text-white transition-colors">
                 Speakers & Keynotes
               </Link>
             </li>
             <li>
-              <Link href="/schedule" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/schedule" className="text-slate-250 hover:text-white transition-colors">
                 Schedule & Workshops
               </Link>
             </li>
             <li>
-              <Link href="/ctf" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/ctf" className="text-slate-250 hover:text-white transition-colors">
                 CTF Challenge
               </Link>
             </li>
             <li>
-              <Link href="/tickets" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/tickets" className="text-slate-250 hover:text-white transition-colors">
                 Get Tickets
               </Link>
             </li>
@@ -55,24 +55,24 @@ export default function Footer() {
         {/* Engagement Forms Column */}
         <div className="space-y-3">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-300">COLLABORATE</h4>
-          <ul className="space-y-2 text-xs font-medium">
+          <ul className="space-y-2 text-sm font-medium">
             <li>
-              <Link href="/contact" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/contact" className="text-slate-250 hover:text-white transition-colors">
                 Contact Form
               </Link>
             </li>
             <li>
-              <Link href="/sponsor" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/sponsor" className="text-slate-250 hover:text-white transition-colors">
                 Sponsor Us
               </Link>
             </li>
             <li>
-              <Link href="/partner" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/partner" className="text-slate-250 hover:text-white transition-colors">
                 Partner with Us
               </Link>
             </li>
             <li>
-              <Link href="/volunteer" className="text-slate-400 hover:text-white transition-colors">
+              <Link href="/volunteer" className="text-slate-250 hover:text-white transition-colors">
                 Volunteer Openings
               </Link>
             </li>
@@ -82,19 +82,19 @@ export default function Footer() {
         {/* Venue Column */}
         <div className="space-y-3">
           <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-300">VENUE</h4>
-          <p className="text-slate-400 text-xs leading-relaxed">
+          <p className="text-slate-200 text-sm leading-relaxed">
             Sharda University Campus<br />
             Plot No. 32-34, Knowledge Park III<br />
             Greater Noida, Uttar Pradesh, India
           </p>
-          <div className="text-[10px] text-slate-400">
+          <div className="text-xs text-slate-200 font-bold">
             Dates: <span className="text-thunder-cyan">03 - 04 October 2026</span>
           </div>
         </div>
       </div>
 
       {/* Bottom Legal / Details section */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] text-slate-500 font-mono">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-300 font-mono">
         <div>
           &copy; 2026 ThunderCipher All Rights Reserved.
         </div>

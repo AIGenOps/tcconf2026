@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ShieldAlert, ShieldCheck, ArrowRight } from "lucide-react";
 
@@ -11,15 +11,47 @@ interface CyberCaptchaProps {
 export default function CyberCaptcha({ onVerify }: CyberCaptchaProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [verified, setVerified] = useState(false);
+  const [dragRange, setDragRange] = useState(240);
   const x = useMotionValue(0);
   
-  // Transform drag X position to opacity/color values
-  const trackBg = useTransform(x, [0, 240], ["rgba(239, 68, 68, 0.1)", "rgba(16, 185, 129, 0.1)"]);
-  const trackBorder = useTransform(x, [0, 240], ["rgba(239, 68, 68, 0.2)", "rgba(16, 185, 129, 0.3)"]);
+  useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.clientWidth;
+        // Slidable block width is w-10 = 40px. px-3 padding is 12px * 2 = 24px.
+        const range = containerWidth - 40 - 24;
+        if (range > 50) {
+          setDragRange(range);
+        }
+      }
+    };
+    
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Dynamically interpolate red-to-green values based on computed dragRange
+  const trackBg = useTransform(x, (v) => {
+    const progress = Math.min(Math.max(v / dragRange, 0), 1);
+    const red = Math.round(239 - (239 - 16) * progress);
+    const green = Math.round(68 + (185 - 68) * progress);
+    const blue = Math.round(68 + (129 - 68) * progress);
+    return `rgba(${red}, ${green}, ${blue}, 0.1)`;
+  });
+
+  const trackBorder = useTransform(x, (v) => {
+    const progress = Math.min(Math.max(v / dragRange, 0), 1);
+    const red = Math.round(239 - (239 - 16) * progress);
+    const green = Math.round(68 + (185 - 68) * progress);
+    const blue = Math.round(68 + (129 - 68) * progress);
+    const alpha = 0.2 + 0.1 * progress;
+    return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+  });
 
   const handleDragEnd = () => {
-    if (x.get() > 210) {
-      x.set(240);
+    if (x.get() > dragRange - 30) {
+      x.set(dragRange);
       setVerified(true);
       // Generate a mock secure visual token
       const verificationToken = `tc_sec_token_${Math.random().toString(36).substring(2, 15)}`;
@@ -33,8 +65,8 @@ export default function CyberCaptcha({ onVerify }: CyberCaptchaProps) {
 
   return (
     <div className="space-y-2">
-      <label className="text-xs font-semibold tracking-wider text-slate-400">
-        Verification
+      <label className="text-xs font-bold tracking-wider text-slate-200 uppercase font-mono">
+        Verification Security
       </label>
       
       <motion.div
@@ -43,14 +75,14 @@ export default function CyberCaptcha({ onVerify }: CyberCaptchaProps) {
         className="relative h-12 rounded-xl border flex items-center justify-between px-3 overflow-hidden backdrop-blur-sm transition-all"
       >
         {/* Sliding Area Text */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none text-[10px] font-mono tracking-widest">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none text-xs font-mono tracking-widest font-bold">
           {verified ? (
             <span className="text-emerald-400 flex items-center">
-              <ShieldCheck className="w-3.5 h-3.5 mr-1 animate-pulse" /> Verification Successful
+              <ShieldCheck className="w-4.5 h-4.5 mr-1 animate-pulse" /> Verification Successful
             </span>
           ) : (
-            <span className="text-slate-400 flex items-center font-sans">
-              Slide to unlock <ArrowRight className="w-3 h-3 ml-1.5 animate-pulse text-thunder-cyan" />
+            <span className="text-slate-200 flex items-center font-sans">
+              Slide to unlock <ArrowRight className="w-4 h-4 ml-1.5 animate-pulse text-thunder-cyan" />
             </span>
           )}
         </div>
@@ -59,7 +91,7 @@ export default function CyberCaptcha({ onVerify }: CyberCaptchaProps) {
         {!verified ? (
           <motion.div
             drag="x"
-            dragConstraints={{ left: 0, right: 240 }}
+            dragConstraints={{ left: 0, right: dragRange }}
             dragElastic={0.1}
             dragMomentum={false}
             onDragEnd={handleDragEnd}

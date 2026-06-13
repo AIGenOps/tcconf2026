@@ -634,7 +634,7 @@ export default function TicketsPage() {
                   {/* Grand total */}
                   <div className="flex items-end justify-between">
                     <div>
-                      <span className="text-xs font-mono text-slate-250 block uppercase tracking-wider font-bold">
+                      <span className="text-xs font-mono text-slate-300 block uppercase tracking-wider font-bold">
                         Amount Payable
                       </span>
                       <span className="text-sm text-slate-300 font-mono">Includes taxes</span>
@@ -864,7 +864,7 @@ export default function TicketsPage() {
                   {/* Grand total */}
                   <div className="flex items-end justify-between">
                     <div>
-                      <span className="text-xs font-mono text-slate-250 block uppercase tracking-wider font-bold">
+                      <span className="text-xs font-mono text-slate-300 block uppercase tracking-wider font-bold">
                         Amount Payable
                       </span>
                       <span className="text-sm text-slate-300 font-mono">Includes taxes</span>

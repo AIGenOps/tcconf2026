@@ -16,7 +16,7 @@ export default function VenuePage() {
         <div className="px-6 md:px-8">
           <Link
             href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
+            className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>

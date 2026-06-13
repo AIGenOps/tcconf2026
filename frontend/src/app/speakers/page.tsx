@@ -39,7 +39,7 @@ export default async function SpeakersPage() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
+            className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
             <ArrowLeft className="w-4.5 h-4.5" />
             <span>RETURN_TO_HOME</span>
@@ -48,7 +48,7 @@ export default async function SpeakersPage() {
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
               Speakers & Keynotes
             </h1>
-            <p className="text-slate-400 text-sm max-w-xl">
+            <p className="text-slate-200 text-sm max-w-xl">
               Meet the elite minds shaping the cyber defense space. Researchers, analysts, CISOs, and developers sharing active zero-day findings.
             </p>
           </div>
@@ -58,8 +58,8 @@ export default async function SpeakersPage() {
         {/* Section 1: Keynote Speakers */}
         {keynotes.length > 0 && (
           <div className="space-y-8">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest pb-2 border-b border-white/5">
-              <Award className="w-4 h-4 text-yellow-400" />
+            <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
+              <Award className="w-4.5 h-4.5 text-yellow-400" />
               <span>CATEGORY_STREAM: KEYNOTE_SPEAKERS</span>
             </div>
 
@@ -67,7 +67,7 @@ export default async function SpeakersPage() {
               {keynotes.map((speaker, idx) => (
                 <div
                   key={idx}
-                  className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#0a0a0c]/60 p-8 backdrop-blur-md transition-all duration-300 hover:border-thunder-blue/30 flex flex-col justify-between"
+                  className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#0a0a0c]/60 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-thunder-blue/30 flex flex-col justify-between"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-thunder-blue/0 to-thunder-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   
@@ -84,13 +84,13 @@ export default async function SpeakersPage() {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-xs font-bold bg-[#070913]">
+                            <div className="w-full h-full flex items-center justify-center text-slate-400 font-mono text-xs font-bold bg-[#070913]">
                               TC
                             </div>
                           )}
                         </div>
                         <div className="space-y-1">
-                          <span className="text-xs font-mono text-thunder-cyan uppercase tracking-wider font-semibold">
+                          <span className="text-xs font-mono text-thunder-cyan uppercase tracking-wider font-bold">
                             KEYNOTE PRESENTER
                           </span>
                           <h3 className="text-2xl font-bold text-white tracking-wide">{speaker.name}</h3>
@@ -101,7 +101,7 @@ export default async function SpeakersPage() {
                           href={speaker.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 rounded-full border border-white/5 bg-white/2 text-slate-400 hover:text-white transition-all flex-shrink-0"
+                          className="p-2 rounded-full border border-white/5 bg-white/2 text-slate-300 hover:text-white transition-all flex-shrink-0"
                           aria-label="LinkedIn"
                         >
                           <Linkedin className="w-4 h-4" />
@@ -109,14 +109,14 @@ export default async function SpeakersPage() {
                       )}
                     </div>
 
-                    <div className="text-xs font-mono text-slate-400">
+                    <div className="text-sm font-mono text-slate-300">
                       {speaker.designation} <span className="text-thunder-blue font-bold">@</span> {speaker.company}
                     </div>
 
-                    <p className="text-slate-400 text-sm leading-relaxed font-sans">{speaker.bio}</p>
+                    <p className="text-slate-200 text-sm leading-relaxed font-sans">{speaker.bio}</p>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-white/5 text-[9px] font-mono text-slate-500 uppercase tracking-widest">
+                  <div className="mt-8 pt-4 border-t border-white/5 text-xs font-mono text-slate-300 uppercase tracking-widest font-bold">
                     SESSION_ID: tc-keynote-{idx + 1}
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default async function SpeakersPage() {
         {/* Section 2: CXO Panels */}
         {panelists.length > 0 && (
           <div className="space-y-8">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest pb-2 border-b border-white/5">
+            <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
               <Shield className="w-4.5 h-4.5 text-thunder-cyan animate-pulse" />
               <span>CATEGORY_STREAM: CXO_PANELISTS</span>
             </div>
@@ -151,7 +151,7 @@ export default async function SpeakersPage() {
                               className="w-full h-full object-cover"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-[9px] bg-[#070913]">
+                            <div className="w-full h-full flex items-center justify-center text-slate-200 font-mono text-xs bg-[#070913]">
                               TC
                             </div>
                           )}
@@ -160,7 +160,7 @@ export default async function SpeakersPage() {
                           <h4 className="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">
                             {speaker.name}
                           </h4>
-                          <span className="text-[10px] font-mono text-slate-500 uppercase">{speaker.company}</span>
+                          <span className="text-xs font-mono text-slate-300 uppercase font-semibold">{speaker.company}</span>
                         </div>
                       </div>
                       {speaker.linkedin && (
@@ -168,16 +168,16 @@ export default async function SpeakersPage() {
                           href={speaker.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-white transition-colors pt-1 flex-shrink-0"
+                          className="text-slate-300 hover:text-white transition-colors pt-1 flex-shrink-0"
                         >
                           <Linkedin className="w-4 h-4" />
                         </a>
                       )}
                     </div>
                     
-                    <p className="text-xs text-slate-400 leading-relaxed font-sans">{speaker.bio}</p>
+                    <p className="text-sm text-slate-200 leading-relaxed font-sans">{speaker.bio}</p>
                     
-                    <div className="text-[10px] font-mono text-thunder-cyan bg-white/2 py-1 px-2.5 rounded border border-white/5 max-w-max">
+                    <div className="text-xs font-mono text-thunder-cyan bg-white/2 py-1 px-2.5 rounded border border-white/5 max-w-max font-bold">
                       {speaker.designation}
                     </div>
                   </div>
@@ -190,7 +190,7 @@ export default async function SpeakersPage() {
         {/* Section 3: Speaker Showcase */}
         {showcase.length > 0 && (
           <div className="space-y-8">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest pb-2 border-b border-white/5">
+            <div className="flex items-center space-x-2 text-xs font-mono text-slate-200 uppercase tracking-widest pb-2 border-b border-white/5 font-bold">
               <UserCheck className="w-4 h-4 text-thunder-blue" />
               <span>CATEGORY_STREAM: TECHNICAL_SHOWCASE</span>
             </div>
@@ -213,7 +213,7 @@ export default async function SpeakersPage() {
                               className="w-full h-full object-cover"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-slate-600 font-mono text-[9px] bg-[#070913]">
+                            <div className="w-full h-full flex items-center justify-center text-slate-200 font-mono text-xs bg-[#070913]">
                               TC
                             </div>
                           )}
@@ -222,7 +222,7 @@ export default async function SpeakersPage() {
                           <h4 className="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">
                             {speaker.name}
                           </h4>
-                          <span className="text-[10px] font-mono text-slate-500 uppercase">{speaker.company}</span>
+                          <span className="text-xs font-mono text-slate-300 uppercase font-semibold">{speaker.company}</span>
                         </div>
                       </div>
                       {speaker.linkedin && (
@@ -230,16 +230,16 @@ export default async function SpeakersPage() {
                           href={speaker.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-white transition-colors pt-1 flex-shrink-0"
+                          className="text-slate-300 hover:text-white transition-colors pt-1 flex-shrink-0"
                         >
                           <Linkedin className="w-4 h-4" />
                         </a>
                       )}
                     </div>
 
-                    <p className="text-xs text-slate-400 leading-relaxed font-sans">{speaker.bio}</p>
+                    <p className="text-sm text-slate-200 leading-relaxed font-sans">{speaker.bio}</p>
 
-                    <div className="text-[10px] font-mono text-thunder-cyan bg-white/2 py-1 px-2.5 rounded border border-white/5 max-w-max">
+                    <div className="text-xs font-mono text-thunder-cyan bg-white/2 py-1 px-2.5 rounded border border-white/5 max-w-max font-bold">
                       {speaker.designation}
                     </div>
                   </div>

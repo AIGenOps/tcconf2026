@@ -189,7 +189,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-white uppercase tracking-wider">Sponsor Us</h4>
-                  <p className="text-xs text-slate-450 max-w-[200px] mx-auto">Promote your brand at the elite cybersecurity event.</p>
+                  <p className="text-xs text-slate-200 max-w-[200px] mx-auto font-medium">Promote your brand at the elite cybersecurity event.</p>
                 </div>
                 <Link
                   href="/sponsor"
@@ -248,7 +248,7 @@ export default function Sponsors({ initialSponsors, initialPartners }: SponsorsP
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-white uppercase tracking-wider">Partner with Us</h4>
-                  <p className="text-xs text-slate-450 max-w-[200px] mx-auto">Collaborate and build the cybersecurity community.</p>
+                  <p className="text-xs text-slate-200 max-w-[200px] mx-auto font-medium">Collaborate and build the cybersecurity community.</p>
                 </div>
                 <Link
                   href="/partner"

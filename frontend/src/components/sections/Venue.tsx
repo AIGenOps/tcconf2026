@@ -26,7 +26,7 @@ export default function Venue() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-white">Sharda University Campus</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-200 text-sm leading-relaxed">
                 Located at Plot No. 32-34, Knowledge Park III, Greater Noida, Sharda University is a premium state-of-the-art educational hub equipped with modern auditoriums, fiber-optic networking, and large hacking villages halls designed for hands-on activities.
               </p>
             </div>
@@ -37,12 +37,12 @@ export default function Venue() {
                 <MapPin className="w-5 h-5" />
               </div>
               <div className="space-y-1">
-                <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">ADDRESS</span>
-                <p className="text-slate-200 text-xs font-semibold leading-relaxed">
+                <span className="text-xs font-mono text-slate-300 uppercase tracking-wider font-bold">ADDRESS</span>
+                <p className="text-slate-200 text-sm font-semibold leading-relaxed">
                   Plot No. 32-34, Knowledge Park III,<br />
                   Greater Noida, Uttar Pradesh, 201310, India
                 </p>
-                <div className="text-[10px] font-mono text-thunder-cyan mt-1">
+                <div className="text-xs font-mono text-thunder-cyan mt-1 font-bold">
                   LAT: 28.4731° N | LON: 77.4829° E
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function Venue() {
                   <Train className="w-4 h-4 text-thunder-cyan mt-0.5" />
                   <div className="space-y-0.5">
                     <span className="font-semibold text-slate-200">Nearest Metro Station</span>
-                    <p className="text-slate-400">Knowledge Park II Metro Station (Aqua Line) — 1.5 km away.</p>
+                    <p className="text-slate-200">Knowledge Park II Metro Station (Aqua Line) — 1.5 km away.</p>
                   </div>
                 </div>
 
@@ -69,7 +69,7 @@ export default function Venue() {
                   <Plane className="w-4 h-4 text-thunder-cyan mt-0.5" />
                   <div className="space-y-0.5">
                     <span className="font-semibold text-slate-200">From Airports</span>
-                    <p className="text-slate-400">Indira Gandhi International Airport (DEL) — approx 50 km (60 mins drive via DND Flyway).</p>
+                    <p className="text-slate-200">Indira Gandhi International Airport (DEL) — approx 50 km (60 mins drive via DND Flyway).</p>
                   </div>
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function Venue() {
             <div className="relative aspect-[4/3] w-full rounded-2xl border border-white/5 bg-[#070913]/30 backdrop-blur-md p-6 overflow-hidden flex flex-col justify-between group hover:border-thunder-blue/20 transition-all duration-500">
               
               {/* Map Header */}
-              <div className="flex items-center justify-between text-xs text-slate-400">
+              <div className="flex items-center justify-between text-sm text-slate-200 font-bold">
                 <span>Campus Map Overview</span>
               </div>
 

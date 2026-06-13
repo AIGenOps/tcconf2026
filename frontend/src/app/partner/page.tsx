@@ -15,7 +15,7 @@ export default function PartnerPage() {
         <div>
           <Link
             href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono text-slate-500 hover:text-thunder-cyan transition-colors"
+            className="inline-flex items-center space-x-2 text-sm font-mono text-slate-200 hover:text-thunder-cyan transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>RETURN_TO_HOME</span>
@@ -34,7 +34,7 @@ export default function PartnerPage() {
             <div className="w-16 h-1 bg-thunder-blue rounded-full mt-4" />
           </div>
 
-          <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-3xl">
+          <p className="text-slate-200 text-sm md:text-base leading-relaxed max-w-3xl font-medium">
             ThunderCipher is the premier cybersecurity conference in the region, bringing together top security researchers, industry professionals, developers, and defense experts. Partnering with us offers a unique opportunity to align your organization, community, or university club with our security ecosystem.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function PartnerPage() {
             <h3 className="text-xl font-bold text-white tracking-tight">
               Partnership Inquiry Form
             </h3>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Academic, press, and community partnerships are available. To align your community club, present joint workshops, or coordinate student delegation attendance, please submit our partnership registration form.
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function PartnerPage() {
             <div className="text-thunder-cyan font-bold text-sm tracking-widest font-mono uppercase">
               Community Integration
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Bridge the gap between your local community members and the international infosec community, offering registration options.
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function PartnerPage() {
             <div className="text-thunder-cyan font-bold text-sm tracking-widest font-mono uppercase">
               Academic Workshops
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Deliver specialized security training, capture-the-flag workshops, and hands-on lockpicking villages.
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function PartnerPage() {
             <div className="text-thunder-cyan font-bold text-sm tracking-widest font-mono uppercase">
               Ecosystem Promotion
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Secure prominent visibility for your organization logo, branding assets, and press releases across all marketing channels.
             </p>
           </div>
