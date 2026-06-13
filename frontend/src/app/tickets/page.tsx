@@ -649,12 +649,10 @@ export default function TicketsPage() {
               {/* Attendee details input form */}
               <div className="glass-panel rounded-2xl p-6 md:p-8 space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <h3 className="text-base font-bold font-mono tracking-wider text-slate-200 uppercase flex items-center">
-                    <Terminal className="w-4.5 h-4.5 text-thunder-cyan mr-2" />
+                  <h3 className="text-base font-bold font-mono tracking-wider text-slate-200 uppercase">
                     Step 02: Attendee Credentials
                   </h3>
                   <div className="flex items-center space-x-1.5 text-sm text-slate-200 font-bold">
-                    <Shield className="w-4 h-4 text-thunder-blue" />
                     <span>256-BIT TLS ENCRYPTED</span>
                   </div>
                 </div>
@@ -669,8 +667,8 @@ export default function TicketsPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
-                        <User className="w-4 h-4 mr-1 text-thunder-blue" /> Full Name
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider">
+                        Full Name
                       </label>
                       <input
                         type="text"
@@ -682,8 +680,8 @@ export default function TicketsPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
-                        <Mail className="w-4 h-4 mr-1 text-thunder-blue" /> Email Address
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider">
+                        Email Address
                       </label>
                       <input
                         type="email"
@@ -698,8 +696,8 @@ export default function TicketsPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
-                        <Smartphone className="w-4 h-4 mr-1 text-thunder-blue" /> Phone Number
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider">
+                        Phone Number
                       </label>
                       <input
                         type="tel"
@@ -711,8 +709,8 @@ export default function TicketsPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center">
-                        <Building className="w-4 h-4 mr-1 text-thunder-blue" /> Organization / College
+                      <label className="text-sm font-mono font-bold text-white uppercase tracking-wider">
+                        Organization / College
                       </label>
                       <input
                         type="text"
@@ -804,19 +802,9 @@ export default function TicketsPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-4 py-4 rounded-xl bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg text-sm font-bold font-mono tracking-widest uppercase flex items-center justify-center space-x-2 border border-thunder-blue/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                    className="w-full mt-4 py-4 rounded-xl bg-thunder-blue text-white shadow-glow-blue hover:shadow-glow-blue-lg text-sm font-bold font-mono tracking-widest uppercase flex items-center justify-center border border-thunder-blue/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
-                    {loading ? (
-                      <>
-                        <RefreshCw className="w-5 h-5 animate-spin" />
-                        <span>PROCESSING_PAYMENT_INIT...</span>
-                      </>
-                    ) : (
-                      <>
-                        <CreditCard className="w-5 h-5" />
-                        <span>PROCEED_TO_GATEWAY (₹{total.toLocaleString("en-IN")})</span>
-                      </>
-                    )}
+                    {loading ? "Processing..." : "Proceed to Pay"}
                   </button>
                 </form>
               </div>
