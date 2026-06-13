@@ -16,8 +16,8 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="space-y-4">
           <a href="https://thundercipher.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 group">
-            <span className="font-mono text-sm font-bold tracking-wider text-slate-200 group-hover:text-white transition-colors">
-              THUNDER<span className="text-thunder-cyan group-hover:text-thunder-cyan/85">CIPHER</span>
+            <span className="font-mono text-sm font-bold tracking-wider text-white group-hover:text-slate-200 transition-colors">
+              THUNDERCIPHER
             </span>
           </a>
           <p className="text-slate-200 text-sm leading-relaxed">

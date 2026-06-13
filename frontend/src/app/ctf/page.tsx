@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowLeft02Icon, AlertCircleIcon, Award01Icon, PlayIcon, Trophy, TerminalIcon, BookOpen01Icon } from "@hugeicons/core-free-icons";
+import { ArrowLeft02Icon, AlertCircleIcon, PlayIcon, TerminalIcon, BookOpen01Icon } from "@hugeicons/core-free-icons";
 
 interface TimeLeft {
   hours: number;
@@ -17,8 +17,8 @@ export default function CTFPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    // CTF starts on Oct 4, 2026 at 09:30 AM
-    const targetDate = new Date("2026-10-04T09:30:00").getTime();
+    // CTF starts on Oct 3, 2026 at 09:30 AM
+    const targetDate = new Date("2026-10-03T09:30:00").getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -105,62 +105,12 @@ export default function CTFPage() {
               ))}
             </div>
             <p className="text-xs text-slate-200 font-mono font-medium">
-              Event begins on Day 2 of the summit (Oct 4, 2026) at 09:30 AM IST.
+              Event begins on Day 1 of the summit (Oct 3, 2026) at 09:30 AM IST.
             </p>
           </div>
         )}
 
-        {/* Prize Pool Panel */}
-        <div className="space-y-6">
-          <div className="flex items-center space-x-2 text-xs font-semibold text-slate-300 tracking-wider pb-2 border-b border-white/5">
-            <HugeiconsIcon icon={Trophy} className="w-4.5 h-4.5 text-yellow-400" />
-            <span>Prize Pool Rewards</span>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* 1st */}
-            <div className="group relative rounded-2xl border border-yellow-400/20 bg-yellow-400/5 p-6 backdrop-blur-sm flex flex-col justify-between min-h-[180px]">
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-wider text-yellow-400">1st Place</span>
-                <h3 className="text-2xl font-bold text-white">INR 30,000</h3>
-                <p className="text-slate-200 text-sm leading-relaxed">
-                  Includes Premium Hardware bypass kit, Certified Winner badge, and corporate interview skips.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono text-yellow-400 font-bold">
-                <HugeiconsIcon icon={Award01Icon} className="w-4 h-4 mr-1.5" /> 1st Place Reward
-              </div>
-            </div>
-
-            {/* 2nd */}
-            <div className="group relative rounded-2xl border border-slate-400/20 bg-slate-400/5 p-6 backdrop-blur-sm flex flex-col justify-between min-h-[180px]">
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-wider text-slate-350">2nd Place</span>
-                <h3 className="text-2xl font-bold text-white">INR 15,000</h3>
-                <p className="text-slate-200 text-sm leading-relaxed">
-                  Includes Advanced lockpicking toolkit, runner-up credentials, and partner merchandise bags.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono text-slate-300 font-bold">
-                <HugeiconsIcon icon={Award01Icon} className="w-4 h-4 mr-1.5" /> 2nd Place Reward
-              </div>
-            </div>
-
-            {/* 3rd */}
-            <div className="group relative rounded-2xl border border-amber-600/20 bg-amber-600/5 p-6 backdrop-blur-sm flex flex-col justify-between min-h-[180px]">
-              <div className="space-y-3">
-                <span className="text-xs font-bold tracking-wider text-amber-500">3rd Place</span>
-                <h3 className="text-2xl font-bold text-white">INR 10,000</h3>
-                <p className="text-slate-200 text-sm leading-relaxed">
-                  Includes pocket lockpicking set, physical certificates, and event sponsor vouchers.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center text-xs font-mono text-amber-500 font-bold">
-                <HugeiconsIcon icon={Award01Icon} className="w-4 h-4 mr-1.5" /> 3rd Place Reward
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Categories Section */}
         <div className="space-y-6">
@@ -201,7 +151,7 @@ export default function CTFPage() {
             </div>
             <div className="flex items-start space-x-2.5">
               <span className="text-thunder-cyan font-bold">[2]</span>
-              <p>Flags are formatted as <code className="text-thunder-cyan font-bold">tcconf2026&#123;string&#125;</code>. Pay close attention to spelling and offsets.</p>
+              <p>Flags are formatted as <code className="text-thunder-cyan font-bold">ThunderCipher&#123;string&#125;</code>. Pay close attention to spelling and offsets.</p>
             </div>
             <div className="flex items-start space-x-2.5">
               <span className="text-thunder-cyan font-bold">[3]</span>

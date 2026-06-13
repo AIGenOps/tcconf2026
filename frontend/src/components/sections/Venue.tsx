@@ -91,7 +91,28 @@ export default function Venue() {
           </div>
 
           {/* Interactive Map Visual Column (7 cols) */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 space-y-6">
+            {/* Venue Photo Gallery */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 group">
+                <img
+                  src="/1.jpeg"
+                  alt="ThunderCipher Conference Venue — Sharda University Campus"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+              </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 group">
+                <img
+                  src="/2.jpeg"
+                  alt="ThunderCipher Conference Venue — Sharda University Auditorium"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Map Panel */}
             <div className="relative aspect-[4/3] w-full rounded-2xl border border-white/5 bg-[#070913]/30 backdrop-blur-md p-6 overflow-hidden flex flex-col justify-between group hover:border-thunder-blue/20 transition-all duration-500">
               
               {/* Map Header */}
