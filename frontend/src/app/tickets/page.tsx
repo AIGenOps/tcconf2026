@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { 
   ArrowLeft02Icon, TerminalIcon, Checkmark, InformationCircleIcon, 
   AlertCircleIcon, Remove01Icon, Add01Icon, Award01Icon, 
-  Shield01Icon, SparklesIcon, DownloadIcon 
+  Shield01Icon, SparklesIcon, Cancel01Icon 
 } from "@hugeicons/core-free-icons";
 import confetti from "canvas-confetti";
 import CyberCaptcha from "@/components/ui/CyberCaptcha";
@@ -36,13 +36,12 @@ export default function TicketsPage() {
   const [error, setError] = useState<string | null>(null);
   const [checkoutStep, setCheckoutStep] = useState<"form" | "processing" | "success">("form");
   
+  // Guidelines popup state
+  const [showGuidelines, setShowGuidelines] = useState<boolean>(false);
+
   // Payment result states
   const [registrationId, setRegistrationId] = useState<string>("");
   const [paymentDetails, setPaymentDetails] = useState<any>(null);
-
-  // Refs for drawing and downloading the ticket
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const ticketRenderedRef = useRef<boolean>(false);
 
   // Fallback check: remove applied promo code if selected tier changes to prevent invalid applications
   useEffect(() => {
@@ -124,7 +123,7 @@ export default function TicketsPage() {
     });
   };
 
-  // 1. Submit Registration Form and Initiate Order
+  // 1. Validate form and show guidelines popup
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -151,6 +150,13 @@ export default function TicketsPage() {
       return;
     }
 
+    // Show guidelines popup instead of directly proceeding
+    setShowGuidelines(true);
+  };
+
+  // 1b. Actually proceed to payment after user acknowledges guidelines
+  const handleConfirmAndPay = async () => {
+    setShowGuidelines(false);
     setLoading(true);
 
     try {
@@ -274,217 +280,6 @@ export default function TicketsPage() {
     });
   };
 
-  // 5. Draw Digital Cyber Ticket on HTML5 Canvas
-  useEffect(() => {
-    if (checkoutStep === "success" && canvasRef.current && paymentDetails) {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
-
-      // Clear canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Gradient background
-      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grad.addColorStop(0, "#080810");
-      grad.addColorStop(0.5, "#020205");
-      grad.addColorStop(1, "#0a0c16");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw Grid overlay lines
-      ctx.strokeStyle = "rgba(0, 82, 255, 0.04)";
-      ctx.lineWidth = 1;
-      const gridSize = 40;
-      for (let x = 0; x < canvas.width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
-      }
-      for (let y = 0; y < canvas.height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-
-      // Border accents (Neon cyan & blue)
-      ctx.strokeStyle = "#0052ff";
-      ctx.lineWidth = 4;
-      ctx.strokeRect(2, 2, canvas.width - 4, canvas.height - 4);
-
-      // Glow corners
-      ctx.strokeStyle = "#00f0ff";
-      ctx.lineWidth = 6;
-      // Top-Left corner
-      ctx.beginPath();
-      ctx.moveTo(3, 40); ctx.lineTo(3, 3); ctx.lineTo(40, 3);
-      ctx.stroke();
-      // Bottom-Right corner
-      ctx.beginPath();
-      ctx.moveTo(canvas.width - 3, canvas.height - 40);
-      ctx.lineTo(canvas.width - 3, canvas.height - 3);
-      ctx.lineTo(canvas.width - 40, canvas.height - 3);
-      ctx.stroke();
-
-      // Divider line for stub ticket (on the right)
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
-      ctx.lineWidth = 2;
-      ctx.setLineDash([8, 8]);
-      ctx.beginPath();
-      ctx.moveTo(canvas.width - 240, 10);
-      ctx.lineTo(canvas.width - 240, canvas.height - 10);
-      ctx.stroke();
-      ctx.setLineDash([]); // Reset line dash
-
-      // Circular punch-out indicators on the top and bottom of divider
-      ctx.fillStyle = "#030303";
-      ctx.beginPath();
-      ctx.arc(canvas.width - 240, 0, 15, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(canvas.width - 240, canvas.height, 15, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Left Panel Content: Brand and Attendee Info
-      // Header Text
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 26px font-sans, system-ui";
-      ctx.fillText("THUNDERCIPHER", 40, 60);
-
-      ctx.fillStyle = "#00f0ff";
-      ctx.font = "bold 13px font-mono";
-      ctx.fillText("CONFERENCE 2026 // SECURITY SUMMIT", 40, 85);
-
-      // Horizontal subtle accent line
-      ctx.fillStyle = "rgba(0, 82, 255, 0.3)";
-      ctx.fillRect(40, 105, 300, 2);
-
-      // Registration Details labels
-      ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
-      ctx.font = "10px font-mono";
-      ctx.fillText("ATTENDEE NAME", 40, 140);
-      ctx.fillText("EMAIL ADDRESS", 40, 195);
-      ctx.fillText("ORGANIZATION / COLLEGE", 40, 250);
-      ctx.fillText("ACCESS LEVEL", 40, 305);
-      ctx.fillText("QUANTITY", 220, 305);
-
-      // Details values
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 15px font-sans";
-      ctx.fillText(paymentDetails.name, 40, 162);
-      ctx.font = "14px font-mono";
-      ctx.fillText(paymentDetails.email, 40, 217);
-      ctx.font = "bold 14px font-sans";
-      ctx.fillText(paymentDetails.organization, 40, 272);
-
-      // Highlight Box for ticket tier
-      ctx.fillStyle = "rgba(0, 240, 255, 0.08)";
-      ctx.fillRect(40, 318, 140, 32);
-      ctx.strokeStyle = "rgba(0, 240, 255, 0.25)";
-      ctx.lineWidth = 1;
-      ctx.strokeRect(40, 318, 140, 32);
-
-      ctx.fillStyle = "#00f0ff";
-      ctx.font = "bold 11px font-mono";
-      ctx.textAlign = "center";
-      ctx.fillText(paymentDetails.ticketName.toUpperCase(), 110, 338);
-      ctx.textAlign = "left"; // Reset align
-
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 15px font-mono";
-      ctx.fillText(`${paymentDetails.quantity} PASS(ES)`, 220, 338);
-
-      // Right Panel Content: Stub & QR Code
-      ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
-      ctx.font = "9px font-mono";
-      ctx.fillText("TICKET SIGNATURE ID", canvas.width - 200, 60);
-
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 12px font-mono";
-      ctx.fillText(registrationId, canvas.width - 200, 80);
-
-      // Programmatic 2D QR Code Drawing
-      const qrSize = 100;
-      const qrX = canvas.width - 170;
-      const qrY = 120;
-      
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(qrX - 8, qrY - 8, qrSize + 16, qrSize + 16);
-      ctx.fillStyle = "#000000";
-      
-      // Draw outer square frames (standards of QR)
-      ctx.fillRect(qrX, qrY, 30, 30);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(qrX + 4, qrY + 4, 22, 22);
-      ctx.fillStyle = "#000000";
-      ctx.fillRect(qrX + 8, qrY + 8, 14, 14);
-
-      // Top right frame
-      ctx.fillRect(qrX + qrSize - 30, qrY, 30, 30);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(qrX + qrSize - 26, qrY + 4, 22, 22);
-      ctx.fillStyle = "#000000";
-      ctx.fillRect(qrX + qrSize - 22, qrY + 8, 14, 14);
-
-      // Bottom left frame
-      ctx.fillRect(qrX, qrY + qrSize - 30, 30, 30);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(qrX + 4, qrY + qrSize - 26, 22, 22);
-      ctx.fillStyle = "#000000";
-      ctx.fillRect(qrX + 8, qrY + qrSize - 22, 14, 14);
-
-      // Pseudo random data matrix blocks
-      ctx.fillStyle = "#000000";
-      const blocksCount = 18;
-      const blockSize = qrSize / blocksCount;
-      
-      // Seeded random matrix drawer
-      let seed = registrationId.charCodeAt(registrationId.length - 1) || 42;
-      const rand = () => {
-        const x = Math.sin(seed++) * 10000;
-        return x - Math.floor(x);
-      };
-
-      for (let r = 0; r < blocksCount; r++) {
-        for (let c = 0; c < blocksCount; c++) {
-          // Avoid the corner registration markers
-          if ((r < 6 && c < 6) || (r < 6 && c >= blocksCount - 6) || (r >= blocksCount - 6 && c < 6)) {
-            continue;
-          }
-          if (rand() > 0.47) {
-            ctx.fillRect(qrX + c * blockSize, qrY + r * blockSize, blockSize + 0.5, blockSize + 0.5);
-          }
-        }
-      }
-
-      // Sub-text QR
-      ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
-      ctx.font = "8px font-mono";
-      ctx.fillText("SCAN AT THE ENTRANCE", canvas.width - 170, 260);
-
-      // Footer brand markers
-      ctx.fillStyle = "rgba(255, 255, 255, 0.15)";
-      ctx.font = "7px font-mono";
-      ctx.fillText("THUNDERCIPHER GATEWAY ENGINE CORE V1.0.2 // SECURE PASSING VALIDATED", 40, canvas.height - 25);
-
-      ticketRenderedRef.current = true;
-    }
-  }, [checkoutStep, paymentDetails, registrationId]);
-
-  // Download Action
-  const handleDownloadTicket = () => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const dataUrl = canvas.toDataURL("image/png");
-      const a = document.createElement("a");
-      a.href = dataUrl;
-      a.download = `ThunderCipher_Pass_${registrationId}.png`;
-      a.click();
-    }
-  };
-
   const handleResetForm = () => {
     setName("");
     setEmail("");
@@ -495,7 +290,6 @@ export default function TicketsPage() {
     setQuantity(1);
     handleRemovePromo();
     setCheckoutStep("form");
-    ticketRenderedRef.current = false;
   };
 
   return (
@@ -933,80 +727,150 @@ export default function TicketsPage() {
               </div>
         )}
 
-        {/* 5. Success State and Ticket Download */}
+        {/* 5. Success State */}
         {checkoutStep === "success" && paymentDetails && (
-          <div className="max-w-3xl mx-auto space-y-8 animate-fadeIn">
+          <div className="max-w-xl mx-auto space-y-6 animate-fadeIn">
             {/* Header success message */}
-            <div className="glass-panel rounded-2xl p-6 md:p-8 text-center space-y-4 border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
-              <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(16,185,129,0.2)] animate-bounce">
-                <HugeiconsIcon icon={SparklesIcon} className="w-7 h-7" />
+            <div className="glass-panel rounded-2xl p-8 md:p-10 text-center space-y-5 border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
+              <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(16,185,129,0.2)] animate-bounce">
+                <HugeiconsIcon icon={SparklesIcon} className="w-8 h-8" />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <h2 className="text-2xl font-extrabold text-white">Payment Verified Successfully!</h2>
-                <p className="text-sm text-slate-200 font-sans max-w-md mx-auto">
-                  Your registration is confirmed. A notification message has been sent to the secure audit logger. You can inspect your digital entry pass below.
+                <p className="text-sm text-slate-200 font-sans max-w-md mx-auto leading-relaxed">
+                  Your registration for <strong className="text-white">{paymentDetails.ticketName}</strong> ({paymentDetails.quantity} pass{paymentDetails.quantity > 1 ? "es" : ""}) has been confirmed.
                 </p>
               </div>
-              {/* Highlight summary badge */}
+
+              {/* Registration ID badge */}
               <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-xl bg-white/2 border border-white/5 text-sm text-slate-200 font-mono">
                 <span>Registration ID:</span>
                 <span className="text-thunder-cyan font-bold uppercase">{registrationId}</span>
               </div>
-            </div>
 
-            {/* Canvas Ticket Container */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-sm font-mono tracking-wider text-slate-200 uppercase flex items-center">
-                  <HugeiconsIcon icon={TerminalIcon} className="w-4 h-4 text-thunder-blue mr-2" />
-                  Your Cryptographic Entry Ticket
-                </h3>
-                <span className="text-xs font-mono text-slate-300 uppercase">
-                  PNG FORMAT // 800 x 400 PX
-                </span>
+              {/* Ticket delivery notice */}
+              <div className="p-4 rounded-xl bg-thunder-blue/5 border border-thunder-blue/20 text-sm text-slate-200 space-y-2">
+                <p className="font-bold text-white flex items-center justify-center space-x-2">
+                  <HugeiconsIcon icon={InformationCircleIcon} className="w-4.5 h-4.5 text-thunder-cyan" />
+                  <span>Ticket Delivery Information</span>
+                </p>
+                <p className="leading-relaxed">
+                  Your ticket will be delivered to <strong className="text-white">{paymentDetails.email}</strong> within <strong className="text-thunder-cyan">4 working days</strong> of payment. Please keep your Registration ID safe for reference.
+                </p>
               </div>
 
-              {/* HTML5 Canvas (Hidden, used to generate PNG) */}
-              <div className="overflow-hidden rounded-xl border border-white/10 shadow-glow-blue max-w-full">
-                <canvas 
-                  ref={canvasRef} 
-                  width={800} 
-                  height={400} 
-                  className="w-full h-auto block bg-slate-950 font-sans"
-                />
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <button
-                  onClick={handleDownloadTicket}
-                  className="flex-1 py-4 rounded-xl bg-thunder-cyan hover:bg-thunder-cyan-dark text-black font-bold font-mono tracking-widest text-sm uppercase flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all cursor-pointer border border-thunder-cyan/40"
-                >
-                  <HugeiconsIcon icon={DownloadIcon} className="w-4.5 h-4.5" />
-                  <span>Download E-Ticket (PNG)</span>
-                </button>
-                <button
-                  onClick={handleResetForm}
-                  className="py-4 px-8 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-slate-200 hover:text-white transition-all text-sm font-bold font-mono tracking-widest uppercase cursor-pointer"
-                >
-                  Register Another Ticket
-                </button>
+              {/* Amount paid summary */}
+              <div className="flex items-center justify-center space-x-4 text-sm font-mono text-slate-300 pt-2">
+                <span>Amount Paid: <strong className="text-white">₹{paymentDetails.totalAmount?.toLocaleString("en-IN")}</strong></span>
               </div>
             </div>
 
-            {/* Local Storage Info Alert */}
-            <div className="p-4 rounded-xl border border-white/5 bg-[#0a0a0c]/60 space-y-2 text-sm text-slate-300">
-              <span className="font-bold text-slate-100 flex items-center">
-                <HugeiconsIcon icon={Shield01Icon} className="w-4 h-4 text-thunder-blue mr-1.5" />
-                Data Storage Core Information
-              </span>
-              <p className="leading-relaxed font-sans text-slate-200">
-                Your purchase receipt has been successfully committed to the database store at <code>src/data/registrations.json</code>. The signature ID matches the generated entry QR block and will be validated during physical check-in at the conference venue gate scanner.
-              </p>
+            {/* Action button */}
+            <div className="text-center">
+              <button
+                onClick={handleResetForm}
+                className="py-4 px-10 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-slate-200 hover:text-white transition-all text-sm font-bold font-mono tracking-widest uppercase cursor-pointer"
+              >
+                Register Another Ticket
+              </button>
             </div>
           </div>
         )}
       </div>
+
+      {/* Guidelines Popup Modal */}
+      {showGuidelines && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowGuidelines(false)}
+          />
+          
+          {/* Modal content */}
+          <div className="relative w-full max-w-lg bg-[#0a0a0c] border border-white/10 rounded-2xl p-6 md:p-8 space-y-5 shadow-2xl max-h-[85vh] overflow-y-auto z-10">
+            {/* Close button */}
+            <button
+              onClick={() => setShowGuidelines(false)}
+              className="absolute top-4 right-4 p-1.5 rounded-full border border-white/10 hover:bg-white/5 text-slate-300 hover:text-white transition-all cursor-pointer"
+            >
+              <HugeiconsIcon icon={Cancel01Icon} className="w-4 h-4" />
+            </button>
+
+            {/* Header */}
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <HugeiconsIcon icon={Shield01Icon} className="w-5 h-5 text-thunder-blue" />
+                <h3 className="text-lg font-bold text-white">Important Guidelines</h3>
+              </div>
+              <p className="text-xs text-slate-300 font-mono">Please read the following before proceeding with your payment.</p>
+            </div>
+
+            {/* Guidelines list */}
+            <div className="space-y-3">
+              <div className="flex items-start space-x-2.5 text-sm text-slate-200">
+                <div className="w-1.5 h-1.5 rounded-full bg-thunder-blue mt-2 flex-shrink-0" />
+                <span>All tickets are strictly <strong className="text-white">non-refundable</strong>. However, passes can be transferred to another eligible delegate.</span>
+              </div>
+
+              {selectedTierId === "student" && (
+                <div className="flex items-start space-x-2.5 text-sm text-amber-400 border border-amber-500/25 bg-amber-500/5 p-3 rounded-lg">
+                  <HugeiconsIcon icon={AlertCircleIcon} className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                  <span>
+                    <strong>Student Verification:</strong> Student Pass holders must carry a valid physical student college ID card. If not found or invalid at the check-in desk, you will have to upgrade to a Standard Pass by paying the ticket price difference.
+                  </span>
+                </div>
+              )}
+
+              {selectedTierId === "woman_in_cyber" && (
+                <div className="flex items-start space-x-2.5 text-sm text-purple-400 border border-purple-500/25 bg-purple-500/5 p-3 rounded-lg">
+                  <HugeiconsIcon icon={AlertCircleIcon} className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <span>
+                    <strong>Diversity Pass Verification:</strong> This pass is exclusively for women delegates. Valid government-issued photo ID verification will be required at check-in.
+                  </span>
+                </div>
+              )}
+
+              <div className="flex items-start space-x-2.5 text-sm text-slate-200">
+                <div className="w-1.5 h-1.5 rounded-full bg-thunder-blue mt-2 flex-shrink-0" />
+                <span>Please ensure your registered email is active, as your digital entry pass will be dispatched to this address.</span>
+              </div>
+
+              <div className="flex items-start space-x-2.5 text-sm text-slate-200">
+                <div className="w-1.5 h-1.5 rounded-full bg-thunder-blue mt-2 flex-shrink-0" />
+                <span>Organizers reserve the right to verify credentials and deny entry in case of falsified information.</span>
+              </div>
+
+              {/* Delivery notice */}
+              <div className="p-3 rounded-lg bg-thunder-cyan/5 border border-thunder-cyan/20 text-sm text-slate-200">
+                <p className="flex items-center space-x-2 font-bold text-white">
+                  <HugeiconsIcon icon={InformationCircleIcon} className="w-4 h-4 text-thunder-cyan" />
+                  <span>Ticket Delivery</span>
+                </p>
+                <p className="mt-1 leading-relaxed">
+                  Your ticket will be delivered to your registered email within <strong className="text-thunder-cyan">4 working days</strong> of successful payment.
+                </p>
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                onClick={handleConfirmAndPay}
+                className="flex-1 py-3.5 rounded-xl bg-thunder-blue text-white shadow-glow-blue text-sm font-bold font-mono tracking-widest uppercase transition-all cursor-pointer border border-thunder-blue/40 hover:shadow-glow-blue-lg"
+              >
+                I Agree, Proceed to Pay
+              </button>
+              <button
+                onClick={() => setShowGuidelines(false)}
+                className="py-3.5 px-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-slate-200 hover:text-white transition-all text-sm font-bold font-mono tracking-widest uppercase cursor-pointer"
+              >
+                Go Back
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
