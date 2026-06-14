@@ -88,24 +88,26 @@ export const TICKET_TIERS: Record<string, TicketTier> = {
 
 export const CONVENIENCE_FEE_PERCENT = 0.02; // 2% gateway convenience charge
 
-export const VALID_PROMO_CODES: Record<string, { discountPrice: number; targetTierId: string }> = {
-  "EHAQK5KS2B": { discountPrice: 1, targetTierId: "*" },
-};
+// Dynamic promo codes — loaded from promos.json at runtime via the promos.ts engine.
+// Legacy static map kept empty for backward compatibility with any imports.
+export const VALID_PROMO_CODES: Record<string, { discountPrice: number; targetTierId: string }> = {};
 
-export function calculateTotal(tierId: string, quantity: number, promoCode?: string) {
+/**
+ * Calculate total price for a ticket order.
+ * promoFinalPrice should be pre-validated via the /api/promo/validate endpoint
+ * or the promos.ts engine before being passed here.
+ */
+export function calculateTotal(tierId: string, quantity: number, promoCode?: string, promoFinalPrice?: number) {
   const tier = TICKET_TIERS[tierId];
   if (!tier) return null;
 
   let unitPrice = tier.price;
   let isPromoApplied = false;
 
-  if (promoCode) {
-    const formattedCode = promoCode.trim().toUpperCase();
-    const promo = VALID_PROMO_CODES[formattedCode];
-    if (promo && (promo.targetTierId === tierId || promo.targetTierId === "*")) {
-      unitPrice = promo.discountPrice;
-      isPromoApplied = true;
-    }
+  // Use pre-validated promo final price if provided
+  if (promoCode && promoFinalPrice !== undefined) {
+    unitPrice = promoFinalPrice;
+    isPromoApplied = true;
   }
 
   const subtotal = unitPrice * quantity;

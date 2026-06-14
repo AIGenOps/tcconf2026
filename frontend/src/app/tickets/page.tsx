@@ -10,7 +10,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import confetti from "canvas-confetti";
 import CyberCaptcha from "@/components/ui/CyberCaptcha";
-import { TICKET_TIERS, CONVENIENCE_FEE_PERCENT, calculateTotal, VALID_PROMO_CODES } from "@/lib/tickets";
+import { TICKET_TIERS, CONVENIENCE_FEE_PERCENT, calculateTotal } from "@/lib/tickets";
 
 export default function TicketsPage() {
   // Navigation / Flow state
@@ -24,6 +24,7 @@ export default function TicketsPage() {
   // Promo code states
   const [promoCodeInput, setPromoCodeInput] = useState<string>("");
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | null>(null);
+  const [promoFinalPrice, setPromoFinalPrice] = useState<number | undefined>(undefined);
   const [promoError, setPromoError] = useState<string | null>(null);
   const [promoSuccess, setPromoSuccess] = useState<string | null>(null);
 
@@ -53,7 +54,8 @@ export default function TicketsPage() {
   const { subtotal, fees, total, unitPrice, isPromoApplied } = calculateTotal(
     selectedTierId, 
     quantity, 
-    appliedPromoCode || undefined
+    appliedPromoCode || undefined,
+    promoFinalPrice
   ) || { subtotal: 0, fees: 0, total: 0, unitPrice: selectedTier.price, isPromoApplied: false };
 
   const handleCaptchaVerify = (verified: boolean, token: string) => {
@@ -68,8 +70,8 @@ export default function TicketsPage() {
     }
   };
 
-  // Promo actions
-  const handleApplyPromo = (e: React.MouseEvent) => {
+  // Promo actions — validates via server API
+  const handleApplyPromo = async (e: React.MouseEvent) => {
     e.preventDefault();
     setPromoError(null);
     setPromoSuccess(null);
@@ -80,24 +82,38 @@ export default function TicketsPage() {
       return;
     }
 
-    const promo = VALID_PROMO_CODES[formattedCode];
-    if (promo) {
-      if (promo.targetTierId === selectedTierId || promo.targetTierId === "*") {
+    try {
+      const res = await fetch("/api/promo/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: formattedCode,
+          tierId: selectedTierId,
+          quantity,
+          email: email || undefined,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.valid) {
         setAppliedPromoCode(formattedCode);
-        setPromoSuccess(`Code applied successfully! Price reduced to ₹${promo.discountPrice}.`);
+        setPromoFinalPrice(data.finalPrice);
+        setPromoSuccess(`Code applied successfully! Price reduced to ₹${data.finalPrice}.`);
       } else {
-        const targetTierName = TICKET_TIERS[promo.targetTierId]?.name || promo.targetTierId;
-        setPromoError(`This promo code is only valid for the ${targetTierName}.`);
+        setPromoError(data.error || "Invalid promo code.");
         setAppliedPromoCode(null);
+        setPromoFinalPrice(undefined);
       }
-    } else {
-      setPromoError("Invalid promo code.");
+    } catch {
+      setPromoError("Failed to validate promo code. Please try again.");
       setAppliedPromoCode(null);
+      setPromoFinalPrice(undefined);
     }
   };
 
   const handleRemovePromo = () => {
     setAppliedPromoCode(null);
+    setPromoFinalPrice(undefined);
     setPromoCodeInput("");
     setPromoSuccess(null);
     setPromoError(null);

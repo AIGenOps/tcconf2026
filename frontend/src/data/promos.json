@@ -1,0 +1,22 @@
+{
+  "promos": [
+    {
+      "code": "EHAQK5KS2B",
+      "discountType": "fixed",
+      "discountValue": 1,
+      "targetTier": "*",
+      "enabled": true,
+      "expiryDate": null,
+      "maxUses": null,
+      "currentUses": 0,
+      "singleUsePerEmail": false,
+      "minQuantity": 1,
+      "usedEmails": [],
+      "note": "Testing promo code - sets all tickets to Rs 1",
+      "createdAt": "2026-06-13T16:20:00Z"
+    }
+  ],
+  "settings": {
+    "password": "tc2026admin"
+  }
+}

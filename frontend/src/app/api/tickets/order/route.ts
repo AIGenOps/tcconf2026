@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { TICKET_TIERS, calculateTotal } from "@/lib/tickets";
+import { validatePromo } from "@/lib/promos";
 import { sanitizeString, isValidEmail, isValidPhone } from "@/lib/sanitize";
 import Razorpay from "razorpay";
 
@@ -54,7 +55,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid ticket type specified." }, { status: 400 });
     }
 
-    const priceDetails = calculateTotal(ticketType, quantity, promoCode);
+    let promoFinalPrice: number | undefined;
+    if (promoCode) {
+      const promoResult = validatePromo(promoCode, ticketType, quantity, email);
+      if (promoResult.valid) {
+        promoFinalPrice = promoResult.finalPrice;
+      }
+    }
+
+    const priceDetails = calculateTotal(ticketType, quantity, promoCode, promoFinalPrice);
     if (!priceDetails) {
       return NextResponse.json({ error: "Error calculating price totals." }, { status: 500 });
     }
