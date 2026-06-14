@@ -18,3 +18,8 @@
 .DS_Store
 *.pem
 *.tsbuildinfo
+
+# dynamic data / databases
+frontend/src/data/promos.json
+frontend/src/data/registrations.json
+
