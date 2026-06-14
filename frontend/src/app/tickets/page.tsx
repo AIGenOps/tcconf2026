@@ -157,37 +157,7 @@ export default function TicketsPage() {
   // 1b. Actually proceed to payment after user acknowledges guidelines
   const handleConfirmAndPay = async () => {
     setShowGuidelines(false);
-    setLoading(true);
-
-    try {
-      // Create the gateway order
-      const response = await fetch("/api/tickets/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          organization,
-          ticketType: selectedTierId,
-          quantity,
-          captchaToken,
-          promoCode: appliedPromoCode || undefined
-        }),
-      });
-
-      const orderData = await response.json();
-
-      if (!response.ok || !orderData.success) {
-        throw new Error(orderData.error || "Failed to initialize order details.");
-      }
-
-      // Trigger live Razorpay checkout popup
-      await launchRazorpayCheckout(orderData);
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred during order initialization.");
-      setLoading(false);
-    }
+    setError("Payment gateway is not set up yet. Please contact the organizers for assistance.");
   };
 
   // 2. Launch Razorpay Gateway popup
